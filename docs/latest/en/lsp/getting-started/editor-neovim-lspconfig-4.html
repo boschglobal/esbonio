@@ -1,0 +1,27 @@
+<p>
+You will also have to increase the LSP logging level in Neovim itself.
+</p>
+
+
+<div class="highlight-vim notranslate"><div class="highlight"><pre><span></span><span class="k">lua</span> <span class="p">&lt;&lt;</span> EOF
+<span class="k">vim</span>.<span class="nb">lsp</span>.set_log_level<span class="p">(</span><span class="s2">&quot;debug&quot;</span><span class="p">)</span>
+EOF
+</pre></div>
+</div>
+
+<p>
+You can then open the log file with the command 
+<code class="docutils literal notranslate">
+<span class="pre">:lua</span>
+ 
+<span class="pre">vim.cmd('e'..vim.lsp.get_log_path())</span>
+</code>
+.
+See 
+<a class="reference external" href="https://github.com/neovim/nvim-lspconfig/#debugging">
+here
+</a>
+
+ for more details.
+</p>
+

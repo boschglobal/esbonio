@@ -1,0 +1,30 @@
+<p>
+The language server can be configured by passing a number of 
+<code class="docutils literal notranslate">
+<span class="pre">initialization-options</span>
+</code>
+
+to it during startup. To set these values you need to pass a function to 
+<code class="docutils literal notranslate">
+<span class="pre">make-lsp-client</span>
+</code>
+
+that returns the options you wish to set.
+</p>
+
+
+<div class="highlight-elisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">make-lsp-client</span><span class="w"> </span><span class="nb">:new-connection</span><span class="w"></span>
+<span class="w">   </span><span class="p">(</span><span class="nv">lsp-stdio-connection</span><span class="w"></span>
+<span class="w">                  </span><span class="o">`</span><span class="p">(</span><span class="o">,</span><span class="p">(</span><span class="nv">executable-find</span><span class="w"> </span><span class="s">&quot;python3&quot;</span><span class="p">)</span><span class="w"> </span><span class="s">&quot;-m&quot;</span><span class="w"> </span><span class="s">&quot;esbonio&quot;</span><span class="p">))</span><span class="w"></span>
+<span class="w">                 </span><span class="nb">:activation-fn</span><span class="w"> </span><span class="p">(</span><span class="nv">lsp-activate-on</span><span class="w"> </span><span class="s">&quot;rst&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                 </span><span class="nb">:initialization-options</span><span class="w"> </span><span class="p">(</span><span class="nb">lambda</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="o">`</span><span class="p">((</span><span class="nv">sphinx</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="p">((</span><span class="nv">confDir</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">&quot;${workspaceRoot}&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                                                                 </span><span class="p">(</span><span class="nv">srcDir</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">&quot;${confDir}&quot;</span><span class="p">)))</span><span class="w"></span>
+<span class="w">                                                      </span><span class="p">(</span><span class="nv">server</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="p">((</span><span class="nv">logLevel</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">&quot;debug&quot;</span><span class="p">)))))</span><span class="w"></span>
+<span class="w">                 </span><span class="nb">:server-id</span><span class="w"> </span><span class="ss">&#39;esbonio</span><span class="p">)))</span><span class="w"></span>
+</pre></div>
+</div>
+
+<p>
+The following is a list of all the available options.
+</p>
+

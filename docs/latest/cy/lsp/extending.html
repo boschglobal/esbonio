@@ -1,0 +1,636 @@
+<!doctype html>
+<html class="no-js" lang="cy">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Indecs" href="../genindex.html" /><link rel="search" title="Chwilio" href="../search.html" /><link rel="next" title="Directives" href="extending/directives.html" /><link rel="prev" title="Advanced Usage" href="advanced-usage.html" />
+
+    <link rel="shortcut icon" href="../_static/favicon.svg"/><!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
+        <title>Extending - Esbonio</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     This is the unstable version of the documentation, features may change or be removed without warning. <a href="/esbonio/docs/stable/en/">Click here</a> to view the released version 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">Esbonio</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/io.github.swyddfa.Esbonio.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Esbonio</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Chwilio" name="q" aria-label="Chwilio">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Language Server</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">Extending</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="extending/directives.html">Directives</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="extending/directives/directive-registry.html">Supporting Custom Directive Registries</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="extending/roles.html">Roles</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="extending/roles/role-registry.html">Supporting Custom Role Registries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="extending/api-reference.html">API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="how-to.html">How To</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="how-to/get-debug-info.html">How To: Get Debug Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sphinx Extensions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../extensions/relevant_to.html">Relevent To</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extensions/tutorial.html">Tutorial</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/tutorial/formatting-example.html">Formatting Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/tutorial/hello-world.html">Shwmae i gyd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extensions/tutorial/solution-example.html">Solution Example</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/devenvs.html">Development Environments</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/swyddfa/esbonio/edit/develop/docs/lsp/extending.rst" title="Edit this page">
+    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
+      <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
+    </svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="extending">
+<span id="lsp-extending"></span><h1>Extending<a class="headerlink" href="#extending" title="Permalink to this heading">#</a></h1>
+<p>In order to support the extensible nature of reStructuredText and Sphinx, Esbonio itself is structured so that it can be easily extended.
+This section of the documentation outlines the server's architecture and how you can write your own extensions.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="extending/directives.html">Directives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending/roles.html">Roles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extending/api-reference.html">API Reference</a></li>
+</ul>
+</div>
+<section id="architecture">
+<span id="lsp-architecture"></span><h2>Architecture<a class="headerlink" href="#architecture" title="Permalink to this heading">#</a></h2>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<div class="figure align-default">
+<svg
+   width="100%"
+   viewBox="0 0 297 210"
+   style="background: var(--color-content-background)"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+<defs
+   id="defs2">
+   <marker
+      style="overflow:visible"
+      id="Arrow1Mstart"
+      refX="0.0"
+      refY="0.0"
+      orient="auto">
+      <path
+         transform="scale(0.4) translate(10,0)"
+         style="fill:var(--color-content-foreground);fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path35046" />
+   </marker>
+   <marker
+      style="overflow:visible;"
+      id="Arrow1Mend"
+      refX="0.0"
+      refY="0.0"
+      orient="auto">
+      <path
+         transform="scale(0.4) rotate(180) translate(10,0)"
+         style="fill:var(--color-content-foreground);fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt;"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path35049" />
+   </marker>
+   <marker
+      style="overflow:visible;"
+      id="Arrow1Lend"
+      refX="0.0"
+      refY="0.0"
+      orient="auto">
+      <path
+         transform="scale(0.8) rotate(180) translate(12.5,0)"
+         style="fill:var(--color-content-foreground);fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt;"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         id="path35043" />
+   </marker>
+   <marker
+      style="overflow:visible"
+      id="Arrow1Mend-1"
+      refX="0"
+      refY="0"
+      orient="auto">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:var(--color-content-foreground);fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path35049-8" />
+   </marker>
+   <marker
+      style="overflow:visible"
+      id="Arrow1Mend-9"
+      refX="0"
+      refY="0"
+      orient="auto">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:var(--color-content-foreground);fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path35049-2" />
+   </marker>
+</defs>
+<g
+   id="layer1">
+   <rect
+      style="fill:var(--color-content-background);stroke:var(--color-content-foreground);stroke-width:1;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+      id="rect1192"
+      width="121.70834"
+      height="129.64583"
+      x="166.15813"
+      y="31.75" />
+   <rect
+      style="fill:var(--color-content-background);stroke:var(--color-content-foreground);stroke-width:1;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+      id="rect1192-3"
+      width="52.916668"
+      height="129.64583"
+      x="5.2916665"
+      y="31.75001" />
+   <rect
+      style="fill:var(--color-sidebar-background);fill-rule:evenodd;stroke:var(--color-content-foreground);stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+      id="rect31"
+      width="68.096382"
+      height="25.12426"
+      x="211.90756"
+      y="46.209999" />
+   <rect
+      style="fill:var(--color-sidebar-background);fill-rule:evenodd;stroke:var(--color-content-foreground);stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+      id="rect31-3"
+      width="68.096382"
+      height="25.12426"
+      x="211.83255"
+      y="123.03125" />
+   <rect
+      style="fill:var(--color-sidebar-background);fill-rule:evenodd;stroke:var(--color-content-foreground);stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+      id="rect31-5"
+      width="68.096382"
+      height="25.12426"
+      x="211.83257"
+      y="75.406258" />
+   <text
+      xml:space="preserve"
+      style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:var(--color-content-foreground);fill-opacity:1;stroke:none;stroke-width:0.264583"
+      x="215.90004"
+      y="60.854172"
+      id="text3354"><tspan
+         id="tspan3352"
+         style="font-size:5.64444px;stroke-width:0.264583"
+         x="215.90004"
+         y="60.854172">Language Feature #1</tspan></text>
+   <text
+      xml:space="preserve"
+      style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:var(--color-content-foreground);fill-opacity:1;stroke:none;stroke-width:0.264583"
+      x="215.5123"
+      y="89.815636"
+      id="text3354-6"><tspan
+         id="tspan3352-2"
+         style="font-size:5.64444px;stroke-width:0.264583"
+         x="215.5123"
+         y="89.815636">Language Feature #2</tspan></text>
+   <text
+      xml:space="preserve"
+      style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:var(--color-content-foreground);fill-opacity:1;stroke:none;stroke-width:0.264583"
+      x="190.10786"
+      y="96.331848"
+      id="text3354-6-0"><tspan
+         id="tspan3352-2-9"
+         style="font-size:5.64444px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="190.10786"
+         y="96.331848">Language </tspan><tspan
+         style="font-size:5.64444px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="190.10786"
+         y="103.3874"
+         id="tspan25491">Server</tspan></text>
+   <text
+      xml:space="preserve"
+      style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:var(--color-content-foreground);fill-opacity:1;stroke:none;stroke-width:0.264583"
+      x="31.655663"
+      y="97.075394"
+      id="text3354-6-0-6"><tspan
+         id="tspan3352-2-9-2"
+         style="font-size:5.64444px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="31.655663"
+         y="97.075394">Language </tspan><tspan
+         style="font-size:5.64444px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="31.655663"
+         y="104.13094"
+         id="tspan25491-6">Client</tspan></text>
+   <text
+      xml:space="preserve"
+      style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:var(--color-content-foreground);fill-opacity:1;stroke:none;stroke-width:0.264583"
+      x="92.105232"
+      y="99.029205"
+      id="text3354-6-0-6-2"><tspan
+         style="font-size:5.64444px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="92.105232"
+         y="99.029205"
+         id="tspan25491-6-7">LSP Protocol</tspan></text>
+   <g
+      id="g34651"
+      transform="translate(-5.8208336)">
+      <rect
+         style="fill:var(--color-content-background);stroke:var(--color-content-foreground);stroke-width:1.07275;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect1192-3-5"
+         width="24.358648"
+         height="129.64583"
+         x="129.62888"
+         y="31.750002" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:var(--color-content-foreground);fill-opacity:1;stroke:none;stroke-width:0.264583"
+         x="141.52403"
+         y="98.416359"
+         id="text3354-6-0-3"><tspan
+         style="font-size:5.64444px;text-align:center;text-anchor:middle;stroke-width:0.264583"
+         x="141.52403"
+         y="98.416359"
+         id="tspan25491-0">Engine</tspan></text>
+   </g>
+   <text
+      xml:space="preserve"
+      style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:var(--color-content-foreground);fill-opacity:1;stroke:none;stroke-width:0.264583"
+      x="105.41908"
+      y="-245.68881"
+      id="text3354-6-9"
+      transform="rotate(90.528171)"><tspan
+         style="font-size:5.64444px;stroke-width:0.264583"
+         x="105.41908"
+         y="-245.68881"
+         id="tspan20015">.....</tspan></text>
+   <text
+      xml:space="preserve"
+      style="font-style:normal;font-weight:normal;font-size:5.64444px;line-height:1.25;font-family:sans-serif;fill:var(--color-content-foreground);fill-opacity:1;stroke:none;stroke-width:0.264583"
+      x="215.92711"
+      y="137.34949"
+      id="text3354-6-9-2"><tspan
+         id="tspan3352-2-1-7"
+         style="font-size:5.64444px;stroke-width:0.264583"
+         x="215.92711"
+         y="137.34949">Language Feature #N</tspan></text>
+   <path
+      style="fill:none;stroke:var(--color-content-foreground);stroke-width:0.83959;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend)"
+      d="M 59.546327,89.945827 H 121.22207"
+      id="path34806" />
+   <path
+      style="fill:none;stroke:var(--color-content-foreground);stroke-width:0.83959;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Mend-9)"
+      d="M 122.87663,104.76253 H 61.200895"
+      id="path34806-0" />
+   <path
+      style="fill:none;stroke:var(--color-content-foreground);stroke-width:0.417578;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow1Mstart);marker-end:url(#Arrow1Mend-1)"
+      d="m 149.53571,96.847604 h 15.25657"
+      id="path34806-7" />
+</g>
+</svg>
+<p class="caption">A rough sketch of how the language server(s) in Esbonio are architected.</p>
+</div><dl class="glossary">
+<dt id="term-Language-Server">Language Server<a class="headerlink" href="#term-Language-Server" title="Permalink to this term">#</a></dt><dd><p>A language server is a subclass of the <code class="docutils literal notranslate"><span class="pre">LanguageServer</span></code> class provided by the <a class="reference external" href="https://pygls.readthedocs.io/en/latest/index.html">pygls</a> library.</p>
+<p>In Esbonio, all the features you would typically associate with a language server, e.g. completions are not actually implemented by the language server.
+These features are provided through a number of &quot;language features&quot; (see below).
+Instead a language server acts a container for all the active language features and provides an API they can use to query aspects of the environment.</p>
+<p>Esbonio currently provides two language servers</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer" title="esbonio.lsp.rst.RstLanguageServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">RstLanguageServer</span></code></a>: Base language server, meant for &quot;vanilla&quot; docutils projects.</p></li>
+<li><p><a class="reference internal" href="extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer" title="esbonio.lsp.sphinx.SphinxLanguageServer"><code class="xref py py-class docutils literal notranslate"><span class="pre">SphinxLanguageServer</span></code></a> Language server, specialising in Sphinx projects.</p></li>
+</ul>
+</dd>
+<dt id="term-Language-Feature">Language Feature<a class="headerlink" href="#term-Language-Feature" title="Permalink to this term">#</a></dt><dd><p>Language features are subclasses of <a class="reference internal" href="extending/api-reference.html#esbonio.lsp.LanguageFeature" title="esbonio.lsp.rst.LanguageFeature"><code class="xref py py-class docutils literal notranslate"><span class="pre">LanguageFeature</span></code></a>.
+They are typically based on a single aspect of reStructuredText (e.g. <a class="reference internal" href="extending/roles.html#esbonio.lsp.roles.Roles" title="esbonio.lsp.roles.Roles"><code class="xref py py-class docutils literal notranslate"><span class="pre">Roles</span></code></a>).</p>
+<p>Language Features (where it makes sense) should be server agnostic, that way the same features can be reused across different envrionments.</p>
+</dd>
+<dt id="term-Engine">Engine<a class="headerlink" href="#term-Engine" title="Permalink to this term">#</a></dt><dd><p>For lack of a better name... an &quot;engine&quot; is responsible for mapping messages from the LSP Protocol into function calls within the language server.
+Unlike the other components of the architecture, an &quot;engine&quot; isn't formally defined and there is no API to implement.
+Instead it's just the term used to refer to all the <code class="docutils literal notranslate"><span class="pre">&#64;server.feature()</span></code> handlers that define how LSP messages should be handled.</p>
+<p>Currently we provide just a single &quot;engine&quot; <a class="reference internal" href="extending/api-reference.html#esbonio.lsp.create_language_server" title="esbonio.lsp.create_language_server"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_language_server()</span></code></a>.
+As an example, here is how it handles <code class="docutils literal notranslate"><span class="pre">textDocument/completion</span></code> requests.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@server</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span>
+    <span class="n">COMPLETION</span><span class="p">,</span>
+    <span class="n">CompletionOptions</span><span class="p">(</span>
+        <span class="n">trigger_characters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="s2">&quot;`&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">],</span> <span class="n">resolve_provider</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">on_completion</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">CompletionParams</span><span class="p">):</span>
+    <span class="n">uri</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">text_document</span><span class="o">.</span><span class="n">uri</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">position</span>
+
+    <span class="n">doc</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">get_document</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">line_at_position</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+    <span class="n">location</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">get_location_type</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+    <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">ls</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">feature</span><span class="o">.</span><span class="n">completion_triggers</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">pattern</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+                <span class="c1"># Only trigger completions if the position of the request is within</span>
+                <span class="c1"># the match.</span>
+                <span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">pos</span><span class="o">.</span><span class="n">character</span> <span class="o">&lt;=</span> <span class="n">stop</span><span class="p">:</span>
+                    <span class="n">context</span> <span class="o">=</span> <span class="n">CompletionContext</span><span class="p">(</span>
+                        <span class="n">doc</span><span class="o">=</span><span class="n">doc</span><span class="p">,</span>
+                        <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">,</span>
+                        <span class="n">match</span><span class="o">=</span><span class="n">match</span><span class="p">,</span>
+                        <span class="n">position</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+                        <span class="n">capabilities</span><span class="o">=</span><span class="n">ls</span><span class="o">.</span><span class="n">client_capabilities</span><span class="p">,</span>
+                    <span class="p">)</span>
+                    <span class="n">ls</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Completion context: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+                    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">feature</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+                        <span class="n">item</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;source_feature&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">data</span> <span class="ow">or</span> <span class="p">{})}</span>
+                        <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">CompletionList</span><span class="p">(</span><span class="n">is_incomplete</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>There is nothing in Esbonio that would prevent you from writing your own if you so desired.</p>
+</dd>
+<dt id="term-Extension-Module">Extension Module<a class="headerlink" href="#term-Extension-Module" title="Permalink to this term">#</a></dt><dd><p>Ordinary Python modules are used to group related functionality together.
+Taking inspiration from how Sphinx is architected, language servers are assembled by passing the list of modules to load to the <a class="reference internal" href="extending/api-reference.html#esbonio.lsp.create_language_server" title="esbonio.lsp.create_language_server"><code class="xref py py-func docutils literal notranslate"><span class="pre">create_language_server()</span></code></a>.
+This assembly process calls any functions with the name <code class="docutils literal notranslate"><span class="pre">esbonio_setup</span></code> allowing for <code class="docutils literal notranslate"><span class="pre">LanguageFeatures</span></code> to be configured and loaded into the server.</p>
+</dd>
+<dt id="term-Startup-Module">Startup Module<a class="headerlink" href="#term-Startup-Module" title="Permalink to this term">#</a></dt><dd><p>As mentioned above, language servers are assembled and this is done inside a startup module.
+A startup module in Esbonio is any Python script or module runnable by a <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">&lt;modulename&gt;</span></code> command that results in a running language server.
+A good use case for a custom entry point would be starting up a language server instance pre configured with all the extensions required by your project.</p>
+</dd>
+</dl>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="extending/directives.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Directives</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="advanced-usage.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Advanced Usage</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Extending</a><ul>
+<li><a class="reference internal" href="#architecture">Architecture</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    <script src="../_static/translations.js"></script>
+    </body>
+</html>

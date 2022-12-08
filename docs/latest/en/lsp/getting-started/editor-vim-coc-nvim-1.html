@@ -1,0 +1,37 @@
+<p>
+<a class="reference external" href="https://github.com/neoclide/coc.nvim">
+coc.nvim
+</a>
+
+ integration is provided by
+the 
+<a class="reference external" href="https://github.com/yaegassy/coc-esbonio">
+coc-esbonio
+</a>
+
+ extension.
+</p>
+
+
+<div class="highlight-vim notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="nb">expandtab</span>
+<span class="k">set</span> <span class="nb">tabstop</span><span class="p">=</span><span class="m">3</span>
+<span class="k">set</span> <span class="nb">softtabstop</span><span class="p">=</span><span class="m">3</span>
+<span class="k">set</span> <span class="nb">shiftwidth</span><span class="p">=</span><span class="m">3</span>
+
+<span class="k">call</span> plug#begin<span class="p">(</span><span class="s1">&#39;./plugins&#39;</span><span class="p">)</span>
+
+Plug <span class="s1">&#39;neoclide/coc.nvim&#39;</span><span class="p">,</span> {<span class="s1">&#39;branch&#39;</span>: <span class="s1">&#39;release&#39;</span>}
+
+<span class="k">call</span> plug#<span class="k">end</span><span class="p">()</span>
+
+<span class="c">&quot; The following is based on snippets found in coc.nvim&#39;s README</span>
+<span class="c">&quot; https://github.com/neoclide/coc.nvim</span>
+<span class="c">&quot;</span>
+<span class="c">&quot; Only methods currently supported by the language server are bound.</span>
+nmap <span class="p">&lt;</span><span class="k">silent</span><span class="p">&gt;</span> [<span class="k">g</span> <span class="p">&lt;</span>Plug<span class="p">&gt;(</span>coc<span class="p">-</span>diagnostic<span class="p">-</span><span class="k">prev</span><span class="p">)</span>
+nmap <span class="p">&lt;</span><span class="k">silent</span><span class="p">&gt;</span> ]<span class="k">g</span> <span class="p">&lt;</span>Plug<span class="p">&gt;(</span>coc<span class="p">-</span>diagnostic<span class="p">-</span>next<span class="p">)</span>
+
+nmap <span class="p">&lt;</span><span class="k">silent</span><span class="p">&gt;</span> <span class="nb">gd</span> <span class="p">&lt;</span>Plug<span class="p">&gt;(</span>coc<span class="p">-</span>definition<span class="p">)</span>
+<span class="nb">nnoremap</span> <span class="p">&lt;</span><span class="k">silent</span><span class="p">&gt;&lt;</span>nowait<span class="p">&gt;</span> <span class="p">&lt;</span>space<span class="p">&gt;</span><span class="k">o</span>  :<span class="p">&lt;</span>C<span class="p">-</span><span class="k">u</span><span class="p">&gt;</span>CocList outline<span class="p">&lt;</span><span class="k">cr</span><span class="p">&gt;</span>
+</pre></div>
+</div>

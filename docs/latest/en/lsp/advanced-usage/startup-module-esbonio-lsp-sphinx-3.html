@@ -1,0 +1,75 @@
+<p>
+Start a local preview webserver.
+</p>
+
+
+<p>
+The server will spin up a local 
+<a class="reference external" href="https://docs.python.org/3/library/http.server.html#module-http.server" title="(in Python v3.11)">
+<code class="docutils literal notranslate">
+<span class="pre">http.server</span>
+</code>
+</a>
+ on a random port in the
+project’s configured 
+<a class="reference internal" href="getting-started.html#confval-sphinx.buildDir-string">
+<code class="xref std std-confval docutils literal notranslate">
+<span class="pre">buildDir</span>
+</code>
+</a>
+ which can be used to
+preview the result of building the project. The server will return an object like the
+following.
+</p>
+
+
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+
+<p>
+This command also accepts a parameters object with the following structure
+</p>
+
+
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;show&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+
+<p>
+By default the 
+<code class="docutils literal notranslate">
+<span class="pre">show</span>
+</code>
+ parameter will default to 
+<code class="docutils literal notranslate">
+<span class="pre">true</span>
+</code>
+ which means the server will
+also send a 
+<a class="reference external" href="https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#window_showDocument">
+window/showDocument
+</a>
+ request, asking the client to open the preview in a
+web browser.
+</p>
+
+
+<p>
+If a client wants to implement its own preview mechanism (like the 
+<a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=swyddfa.esbonio">
+VSCode Extension
+</a>
+
+)
+it can set 
+<code class="docutils literal notranslate">
+<span class="pre">show</span>
+</code>
+ to 
+<code class="docutils literal notranslate">
+<span class="pre">false</span>
+</code>
+ to suppress this behavior.
+</p>
+

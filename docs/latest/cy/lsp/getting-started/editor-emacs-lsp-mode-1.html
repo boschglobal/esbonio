@@ -1,0 +1,22 @@
+<p>
+<code class="docutils literal notranslate">
+<span class="pre">lsp-mode</span>
+</code>
+ requires that the server be registered so that is knows how and
+when to start the server.
+</p>
+
+
+<div class="highlight-elisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">require</span><span class="w"> </span><span class="ss">&#39;lsp-mode</span><span class="p">)</span><span class="w"></span>
+
+<span class="p">(</span><span class="nv">add-to-list</span><span class="w"> </span><span class="ss">&#39;lsp-language-id-configuration</span><span class="w"> </span><span class="o">&#39;</span><span class="p">(</span><span class="nv">rst-mode</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="s">&quot;rst&quot;</span><span class="p">))</span><span class="w"></span>
+<span class="p">(</span><span class="nv">lsp-register-client</span><span class="w"></span>
+<span class="w"> </span><span class="p">(</span><span class="nv">make-lsp-client</span><span class="w"> </span><span class="nb">:new-connection</span><span class="w"></span>
+<span class="w">		  </span><span class="p">(</span><span class="nv">lsp-stdio-connection</span><span class="w"></span>
+<span class="w">                   </span><span class="o">`</span><span class="p">(</span><span class="o">,</span><span class="p">(</span><span class="nv">executable-find</span><span class="w"> </span><span class="s">&quot;python3&quot;</span><span class="p">)</span><span class="w"> </span><span class="s">&quot;-m&quot;</span><span class="w"> </span><span class="s">&quot;esbonio&quot;</span><span class="p">))</span><span class="w"></span>
+<span class="w">                  </span><span class="nb">:activation-fn</span><span class="w"> </span><span class="p">(</span><span class="nv">lsp-activate-on</span><span class="w"> </span><span class="s">&quot;rst&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                  </span><span class="nb">:server-id</span><span class="w"> </span><span class="ss">&#39;esbonio</span><span class="p">))</span><span class="w"></span>
+
+<span class="p">(</span><span class="nv">add-hook</span><span class="w"> </span><span class="ss">&#39;rst-mode-hook</span><span class="w"> </span><span class="ss">&#39;lsp</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+</div>

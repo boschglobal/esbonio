@@ -1,0 +1,1278 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" />
+
+    <link rel="shortcut icon" href="../../../_static/favicon.svg"/><!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
+        <title>esbonio.lsp.directives - Esbonio</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     This is the unstable version of the documentation, features may change or be removed without warning. <a href="/esbonio/docs/stable/en/">Click here</a> to view the released version 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../index.html"><div class="brand">Esbonio</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../../_static/io.github.swyddfa.Esbonio.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Esbonio</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Language Server</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lsp/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../lsp/advanced-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../lsp/extending.html">Extending</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../lsp/extending/directives.html">Directives</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../lsp/extending/directives/directive-registry.html">Supporting Custom Directive Registries</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../lsp/extending/roles.html">Roles</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../lsp/extending/roles/role-registry.html">Supporting Custom Role Registries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../lsp/extending/api-reference.html">API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../lsp/how-to.html">How To</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../lsp/how-to/get-debug-info.html">How To: Get Debug Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sphinx Extensions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../extensions/relevant_to.html">Relevent To</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../extensions/tutorial.html">Tutorial</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../extensions/tutorial/formatting-example.html">Formatting Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extensions/tutorial/hello-world.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../extensions/tutorial/solution-example.html">Solution Example</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing/devenvs.html">Development Environments</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <h1>Source code for esbonio.lsp.directives</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">import</span> <span class="nn">typing</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+
+<span class="kn">from</span> <span class="nn">docutils.parsers.rst</span> <span class="kn">import</span> <span class="n">Directive</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">CompletionItem</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">CompletionItemKind</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">DocumentLink</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">InsertTextFormat</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">Location</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">MarkupContent</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">MarkupKind</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">Position</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">Range</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">TextEdit</span>
+<span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Protocol</span>
+
+<span class="kn">from</span> <span class="nn">esbonio.lsp</span> <span class="kn">import</span> <span class="n">CompletionContext</span>
+<span class="kn">from</span> <span class="nn">esbonio.lsp</span> <span class="kn">import</span> <span class="n">DefinitionContext</span>
+<span class="kn">from</span> <span class="nn">esbonio.lsp</span> <span class="kn">import</span> <span class="n">DocumentLinkContext</span>
+<span class="kn">from</span> <span class="nn">esbonio.lsp</span> <span class="kn">import</span> <span class="n">HoverContext</span>
+<span class="kn">from</span> <span class="nn">esbonio.lsp</span> <span class="kn">import</span> <span class="n">ImplementationContext</span>
+<span class="kn">from</span> <span class="nn">esbonio.lsp</span> <span class="kn">import</span> <span class="n">LanguageFeature</span>
+<span class="kn">from</span> <span class="nn">esbonio.lsp</span> <span class="kn">import</span> <span class="n">RstLanguageServer</span>
+<span class="kn">from</span> <span class="nn">esbonio.lsp.sphinx</span> <span class="kn">import</span> <span class="n">SphinxLanguageServer</span>
+<span class="kn">from</span> <span class="nn">esbonio.lsp.util.inspect</span> <span class="kn">import</span> <span class="n">get_object_location</span>
+<span class="kn">from</span> <span class="nn">esbonio.lsp.util.patterns</span> <span class="kn">import</span> <span class="n">DIRECTIVE</span>
+<span class="kn">from</span> <span class="nn">esbonio.lsp.util.patterns</span> <span class="kn">import</span> <span class="n">DIRECTIVE_OPTION</span>
+
+
+<div class="viewcode-block" id="DirectiveLanguageFeature"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.DirectiveLanguageFeature">[docs]</a><span class="k">class</span> <span class="nc">DirectiveLanguageFeature</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Base class for directive language features.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DirectiveLanguageFeature.complete_arguments"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.DirectiveLanguageFeature.complete_arguments">[docs]</a>    <span class="k">def</span> <span class="nf">complete_arguments</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">CompletionContext</span><span class="p">,</span> <span class="n">domain</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">CompletionItem</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return a list of completion items representing valid targets for the given</span>
+<span class="sd">        directive.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        context:</span>
+<span class="sd">           The completion context</span>
+<span class="sd">        domain:</span>
+<span class="sd">           The name of the domain the directive is a member of</span>
+<span class="sd">        name:</span>
+<span class="sd">           The name of the domain</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="DirectiveLanguageFeature.get_implementation"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.DirectiveLanguageFeature.get_implementation">[docs]</a>    <span class="k">def</span> <span class="nf">get_implementation</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">directive</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">domain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Directive</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return the implementation for the given directive name.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_directives</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">directive</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DirectiveLanguageFeature.index_directives"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.DirectiveLanguageFeature.index_directives">[docs]</a>    <span class="k">def</span> <span class="nf">index_directives</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Directive</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return all known directives.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="DirectiveLanguageFeature.suggest_directives"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.DirectiveLanguageFeature.suggest_directives">[docs]</a>    <span class="k">def</span> <span class="nf">suggest_directives</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">CompletionContext</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Directive</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;Suggest directives that may be used, given a completion context.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">index_directives</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="DirectiveLanguageFeature.suggest_options"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.DirectiveLanguageFeature.suggest_options">[docs]</a>    <span class="k">def</span> <span class="nf">suggest_options</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">CompletionContext</span><span class="p">,</span> <span class="n">directive</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">domain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Suggest options that may be used, given a completion context.&quot;&quot;&quot;</span>
+
+        <span class="n">impl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_implementation</span><span class="p">(</span><span class="n">directive</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">impl</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="n">option_spec</span> <span class="o">=</span> <span class="n">impl</span><span class="o">.</span><span class="n">option_spec</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="k">return</span> <span class="n">option_spec</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="DirectiveLanguageFeature.resolve_argument_link"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.DirectiveLanguageFeature.resolve_argument_link">[docs]</a>    <span class="k">def</span> <span class="nf">resolve_argument_link</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">context</span><span class="p">:</span> <span class="n">DocumentLinkContext</span><span class="p">,</span>
+        <span class="n">directive</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">domain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">argument</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;Resolve a document link request for the given argument.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        context</span>
+<span class="sd">           The context of the document link request.</span>
+
+<span class="sd">        directive</span>
+<span class="sd">           The name of the directive the argument is associated with.</span>
+
+<span class="sd">        domain</span>
+<span class="sd">           The name of the domain the directive belongs to, if applicable.</span>
+
+<span class="sd">        argument</span>
+<span class="sd">           The argument to resolve the link for.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="DirectiveLanguageFeature.find_argument_definitions"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.DirectiveLanguageFeature.find_argument_definitions">[docs]</a>    <span class="k">def</span> <span class="nf">find_argument_definitions</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">context</span><span class="p">:</span> <span class="n">DefinitionContext</span><span class="p">,</span>
+        <span class="n">directive</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">domain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">argument</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Location</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return a list of locations representing definitions of the given argument.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        context</span>
+<span class="sd">           The context of the definition request.</span>
+
+<span class="sd">        directive</span>
+<span class="sd">           The name of the directive the argument is associated with.</span>
+
+<span class="sd">        domain</span>
+<span class="sd">           The name of the domain the directive belongs to, if applicable.</span>
+
+<span class="sd">        argument</span>
+<span class="sd">           The argument to find the definition of.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[]</span></div></div>
+
+
+<div class="viewcode-block" id="ArgumentCompletion"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.ArgumentCompletion">[docs]</a><span class="k">class</span> <span class="nc">ArgumentCompletion</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A completion provider for directive arguments.</span>
+
+<span class="sd">    .. deprecated:: 0.14.2</span>
+
+<span class="sd">       This will be removed in ``v1.0``, use subclasses of</span>
+<span class="sd">       :class:`~esbonio.lsp.directives.DirectiveLanguageFeature` instead.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ArgumentCompletion.complete_arguments"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.ArgumentCompletion.complete_arguments">[docs]</a>    <span class="k">def</span> <span class="nf">complete_arguments</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">CompletionContext</span><span class="p">,</span> <span class="n">domain</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">CompletionItem</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return a list of completion items representing valid targets for the given</span>
+<span class="sd">        directive.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        context:</span>
+<span class="sd">           The completion context</span>
+<span class="sd">        domain:</span>
+<span class="sd">           The name of the domain the directive is a member of</span>
+<span class="sd">        name:</span>
+<span class="sd">           The name of the domain</span>
+<span class="sd">        &quot;&quot;&quot;</span></div></div>
+
+
+<div class="viewcode-block" id="ArgumentDefinition"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.ArgumentDefinition">[docs]</a><span class="k">class</span> <span class="nc">ArgumentDefinition</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A definition provider for directive arguments.</span>
+
+<span class="sd">    .. deprecated:: 0.14.2</span>
+
+<span class="sd">       This will be removed in ``v1.0``, use subclasses of</span>
+<span class="sd">       :class:`~esbonio.lsp.directives.DirectiveLanguageFeature` instead.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ArgumentDefinition.find_definitions"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.ArgumentDefinition.find_definitions">[docs]</a>    <span class="k">def</span> <span class="nf">find_definitions</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">context</span><span class="p">:</span> <span class="n">DefinitionContext</span><span class="p">,</span>
+        <span class="n">directive</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">domain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">argument</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Location</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return a list of locations representing definitions of the given argument.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        context:</span>
+<span class="sd">           The context of the definition request.</span>
+<span class="sd">        directive:</span>
+<span class="sd">           The name of the directive the argument is associated with.</span>
+<span class="sd">        domain:</span>
+<span class="sd">           The name of the domain the directive belongs to, if applicable.</span>
+<span class="sd">        argument:</span>
+<span class="sd">           The argument to find the definition of.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div></div>
+
+
+<div class="viewcode-block" id="ArgumentLink"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.ArgumentLink">[docs]</a><span class="k">class</span> <span class="nc">ArgumentLink</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A document link resolver for directive arguments.</span>
+
+<span class="sd">    .. deprecated:: 0.14.2</span>
+
+<span class="sd">       This will be removed in ``v1.0``, use subclasses of</span>
+<span class="sd">       :class:`~esbonio.lsp.directives.DirectiveLanguageFeature` instead.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ArgumentLink.resolve_link"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.ArgumentLink.resolve_link">[docs]</a>    <span class="k">def</span> <span class="nf">resolve_link</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">context</span><span class="p">:</span> <span class="n">DocumentLinkContext</span><span class="p">,</span>
+        <span class="n">directive</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">domain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">argument</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;Resolve a document link request for the given argument.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        context:</span>
+<span class="sd">           The context of the document link request.</span>
+<span class="sd">        directive:</span>
+<span class="sd">           The name of the directive the argument is associated with.</span>
+<span class="sd">        domain:</span>
+<span class="sd">           The name of the domain the directive belongs to, if applicable.</span>
+<span class="sd">        argument:</span>
+<span class="sd">           The argument to resolve the link for.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div></div>
+
+
+<div class="viewcode-block" id="Directives"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.Directives">[docs]</a><span class="k">class</span> <span class="nc">Directives</span><span class="p">(</span><span class="n">LanguageFeature</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Directive support for the language server.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_documentation</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="sd">&quot;&quot;&quot;Cache for documentation.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_features</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">DirectiveLanguageFeature</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="sd">&quot;&quot;&quot;The collection of registered features.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Directives.add_feature"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.Directives.add_feature">[docs]</a>    <span class="k">def</span> <span class="nf">add_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">:</span> <span class="n">DirectiveLanguageFeature</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Register a directive language feature.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature</span>
+<span class="sd">           The directive language feature</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">feature</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">feature</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="c1"># Create an unique key for this instance.</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_features</span><span class="p">:</span>
+            <span class="n">key</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;.</span><span class="si">{</span><span class="nb">len</span><span class="p">([</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">key</span><span class="p">)])</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_features</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">feature</span></div>
+
+<div class="viewcode-block" id="Directives.add_argument_completion_provider"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.Directives.add_argument_completion_provider">[docs]</a>    <span class="k">def</span> <span class="nf">add_argument_completion_provider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">provider</span><span class="p">:</span> <span class="n">ArgumentCompletion</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Register an :class:`~esbonio.lsp.directives.ArgumentCompletion` provider.</span>
+
+<span class="sd">        .. deprecated:: 0.14.2</span>
+
+<span class="sd">           This will be removed in ``v1.0``, use</span>
+<span class="sd">           :meth:`~esbonio.lsp.directives.Directives.add_feature` with a</span>
+<span class="sd">           :class:`~esbonio.lsp.directives.DirectiveLanguageFeature` subclass instead.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        provider:</span>
+<span class="sd">           The provider to register.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;ArgumentCompletion providers are deprecated in favour of &quot;</span>
+            <span class="s2">&quot;DirectiveLanguageFeatures, this method will be removed in v1.0&quot;</span><span class="p">,</span>
+            <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">name</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">provider</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.completion&quot;</span>
+
+        <span class="c1"># Automatically derive the feature definition from the provider.</span>
+        <span class="n">feature</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">CompletionProvider&quot;</span><span class="p">,</span>
+            <span class="p">(</span><span class="n">DirectiveLanguageFeature</span><span class="p">,),</span>
+            <span class="p">{</span><span class="s2">&quot;complete_arguments&quot;</span><span class="p">:</span> <span class="n">provider</span><span class="o">.</span><span class="n">complete_arguments</span><span class="p">},</span>
+        <span class="p">)()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_features</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">feature</span></div>
+
+<div class="viewcode-block" id="Directives.add_argument_definition_provider"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.Directives.add_argument_definition_provider">[docs]</a>    <span class="k">def</span> <span class="nf">add_argument_definition_provider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">provider</span><span class="p">:</span> <span class="n">ArgumentDefinition</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Register an :class:`~esbonio.lsp.directives.ArgumentDefinition` provider.</span>
+
+<span class="sd">        .. deprecated:: 0.14.2</span>
+
+<span class="sd">           This will be removed in ``v1.0``, use</span>
+<span class="sd">           :meth:`~esbonio.lsp.directives.Directives.add_feature` with a</span>
+<span class="sd">           :class:`~esbonio.lsp.directives.DirectiveLanguageFeature` subclass instead.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        provider:</span>
+<span class="sd">           The provider to register.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;ArgumentDefinition providers are deprecated in favour of &quot;</span>
+            <span class="s2">&quot;DirectiveLanguageFeatures, this method will be removed in v1.0&quot;</span><span class="p">,</span>
+            <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">name</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">provider</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.definitions&quot;</span>
+
+        <span class="c1"># Automatically derive the feature definition from the provider.</span>
+        <span class="n">feature</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">DefinitionProvider&quot;</span><span class="p">,</span>
+            <span class="p">(</span><span class="n">DirectiveLanguageFeature</span><span class="p">,),</span>
+            <span class="p">{</span><span class="s2">&quot;find_argument_definitions&quot;</span><span class="p">:</span> <span class="n">provider</span><span class="o">.</span><span class="n">find_definitions</span><span class="p">},</span>
+        <span class="p">)()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_features</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">feature</span></div>
+
+<div class="viewcode-block" id="Directives.add_argument_link_provider"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.Directives.add_argument_link_provider">[docs]</a>    <span class="k">def</span> <span class="nf">add_argument_link_provider</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">provider</span><span class="p">:</span> <span class="n">ArgumentLink</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Register an :class:`~esbonio.lsp.directives.ArgumentLink` provider.</span>
+
+<span class="sd">        .. deprecated:: 0.14.2</span>
+
+<span class="sd">           This will be removed in ``v1.0``, use</span>
+<span class="sd">           :meth:`~esbonio.lsp.directives.Directives.add_feature` with a</span>
+<span class="sd">           :class:`~esbonio.lsp.directives.DirectiveLanguageFeature` subclass instead.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        provider:</span>
+<span class="sd">           The provider to register.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;ArgumentLink providers are deprecated in favour of &quot;</span>
+            <span class="s2">&quot;DirectiveLanguageFeatures, this method will be removed in v1.0&quot;</span><span class="p">,</span>
+            <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">name</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">provider</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.links&quot;</span>
+
+        <span class="c1"># Automatically derive the feature definition from the provider.</span>
+        <span class="n">feature</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">LinkProvider&quot;</span><span class="p">,</span>
+            <span class="p">(</span><span class="n">DirectiveLanguageFeature</span><span class="p">,),</span>
+            <span class="p">{</span><span class="s2">&quot;resolve_argument_link&quot;</span><span class="p">:</span> <span class="n">provider</span><span class="o">.</span><span class="n">resolve_link</span><span class="p">},</span>
+        <span class="p">)()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_features</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">feature</span></div>
+
+<div class="viewcode-block" id="Directives.add_documentation"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.Directives.add_documentation">[docs]</a>    <span class="k">def</span> <span class="nf">add_documentation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">documentation</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Register directive documentation.</span>
+
+<span class="sd">        ``documentation`` should be a dictionary with the following structure ::</span>
+
+<span class="sd">           documentation = {</span>
+<span class="sd">               &quot;raw(docutils.parsers.rst.directives.misc.Raw)&quot;: {</span>
+<span class="sd">                   &quot;is_markdown&quot;: true,</span>
+<span class="sd">                   &quot;license&quot;: &quot;https://...&quot;,</span>
+<span class="sd">                   &quot;source&quot;: &quot;https://...&quot;,</span>
+<span class="sd">                   &quot;description&quot;: [</span>
+<span class="sd">                       &quot;# .. raw::&quot;,</span>
+<span class="sd">                       &quot;The raw directive is used for...&quot;,</span>
+<span class="sd">                       ...</span>
+<span class="sd">                    ]</span>
+<span class="sd">                   &quot;options&quot;: {</span>
+<span class="sd">                       &quot;file&quot;: &quot;The file option allows...&quot;,</span>
+<span class="sd">                       ...</span>
+<span class="sd">                   }</span>
+<span class="sd">               }</span>
+<span class="sd">           }</span>
+
+<span class="sd">        where the key has the form ``name(dotted_name)``. There are cases where a</span>
+<span class="sd">        directive&#39;s implementation is not sufficient to uniquely identify it as</span>
+<span class="sd">        multiple directives can be provided by a single class.</span>
+
+<span class="sd">        This means the key has to be a combination of the ``name`` the user writes</span>
+<span class="sd">        in a reStructuredText document and ``dotted_name`` is the fully qualified</span>
+<span class="sd">        class name of the directive&#39;s implementation.</span>
+
+<span class="sd">        .. note::</span>
+
+<span class="sd">           If there is a clash with an existing key, the existing value will be</span>
+<span class="sd">           overwritten with the new value.</span>
+
+<span class="sd">        The values in this dictionary are themselves dictionaries with the following</span>
+<span class="sd">        fields.</span>
+
+<span class="sd">        ``description``</span>
+<span class="sd">           A list of strings for the directive&#39;s main documentation.</span>
+
+<span class="sd">        ``options``,</span>
+<span class="sd">           A dictionary, with a field for the documentaton of each of the directive&#39;s</span>
+<span class="sd">           options.</span>
+
+<span class="sd">        ``is_markdown``</span>
+<span class="sd">           A boolean flag used to indicate whether the ``description`` and ``options``</span>
+<span class="sd">           are written in plain text or markdown.</span>
+
+<span class="sd">        ``source``</span>
+<span class="sd">           The url to the documentation&#39;s source</span>
+
+<span class="sd">        ``license``</span>
+<span class="sd">           The url to the documentation&#39;s license</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        documentation:</span>
+<span class="sd">           The documentation to register.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">documentation</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">description</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="p">[])</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">description</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="n">source</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">source</span><span class="p">:</span>
+                <span class="n">description</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[Source](</span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+            <span class="n">license</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;license&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">license</span><span class="p">:</span>
+                <span class="n">description</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[License](</span><span class="si">{</span><span class="n">license</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+            <span class="n">doc</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_documentation</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">doc</span></div>
+
+<div class="viewcode-block" id="Directives.get_directives"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.Directives.get_directives">[docs]</a>    <span class="k">def</span> <span class="nf">get_directives</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Directive</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return a dictionary of all known directives.&quot;&quot;&quot;</span>
+
+        <span class="n">directives</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">directives</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">index_directives</span><span class="p">())</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                    <span class="s2">&quot;Unable to index directives, error in feature &#39;</span><span class="si">%s</span><span class="s2">&#39;</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                    <span class="n">name</span><span class="p">,</span>
+                    <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">(),</span>
+                <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">directives</span></div>
+
+<div class="viewcode-block" id="Directives.get_implementation"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.Directives.get_implementation">[docs]</a>    <span class="k">def</span> <span class="nf">get_implementation</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">directive</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">domain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Directive</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return the implementation of a directive given its name</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        directive</span>
+<span class="sd">           The name of the directive.</span>
+
+<span class="sd">        domain</span>
+<span class="sd">           The domain of the directive, if applicable.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">domain</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">directive</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">directive</span>
+
+        <span class="k">for</span> <span class="n">feature_name</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">impl</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">get_implementation</span><span class="p">(</span><span class="n">directive</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">impl</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">impl</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                    <span class="s2">&quot;Unable to get implementation for &#39;</span><span class="si">%s</span><span class="s2">&#39;, error in feature: &#39;</span><span class="si">%s</span><span class="s2">&#39;</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                    <span class="n">name</span><span class="p">,</span>
+                    <span class="n">feature_name</span><span class="p">,</span>
+                    <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">(),</span>
+                <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="s2">&quot;Unable to get implementation for &#39;</span><span class="si">%s</span><span class="s2">&#39;, unknown directive&quot;</span><span class="p">,</span> <span class="n">name</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+
+<div class="viewcode-block" id="Directives.suggest_directives"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.Directives.suggest_directives">[docs]</a>    <span class="k">def</span> <span class="nf">suggest_directives</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">CompletionContext</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Directive</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;Suggest directives that may be used, given a completion context.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        context</span>
+<span class="sd">           The CompletionContext.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">yield from</span> <span class="n">feature</span><span class="o">.</span><span class="n">suggest_directives</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                    <span class="s2">&quot;Unable to suggest directives, error in feature: &#39;</span><span class="si">%s</span><span class="s2">&#39;</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                    <span class="n">name</span><span class="p">,</span>
+                    <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">(),</span>
+                <span class="p">)</span></div>
+
+<div class="viewcode-block" id="Directives.suggest_options"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.Directives.suggest_options">[docs]</a>    <span class="k">def</span> <span class="nf">suggest_options</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">CompletionContext</span><span class="p">,</span> <span class="n">directive</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">domain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Suggest directive options that may be used, given a completion context.&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">domain</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">directive</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">directive</span>
+
+        <span class="k">for</span> <span class="n">feature_name</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">yield from</span> <span class="n">feature</span><span class="o">.</span><span class="n">suggest_options</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">directive</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                    <span class="s2">&quot;Unable to suggest options for directive &#39;</span><span class="si">%s</span><span class="s2">&#39;, error in feature: &#39;</span><span class="si">%s</span><span class="s2">&#39;</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span>
+                    <span class="n">name</span><span class="p">,</span>
+                    <span class="n">feature_name</span><span class="p">,</span>
+                    <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">(),</span>
+                <span class="p">)</span></div>
+
+    <span class="n">completion_triggers</span> <span class="o">=</span> <span class="p">[</span><span class="n">DIRECTIVE</span><span class="p">,</span> <span class="n">DIRECTIVE_OPTION</span><span class="p">]</span>
+    <span class="n">definition_triggers</span> <span class="o">=</span> <span class="p">[</span><span class="n">DIRECTIVE</span><span class="p">]</span>
+    <span class="n">hover_triggers</span> <span class="o">=</span> <span class="p">[</span><span class="n">DIRECTIVE</span><span class="p">]</span>
+    <span class="n">implementation_triggers</span> <span class="o">=</span> <span class="p">[</span><span class="n">DIRECTIVE</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">completion_resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">CompletionItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CompletionItem</span><span class="p">:</span>
+
+        <span class="c1"># We need extra info to know who to call.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">item</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">Dict</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">ctype</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;completion_type&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ctype</span> <span class="o">==</span> <span class="s2">&quot;directive&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">completion_resolve_directive</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">ctype</span> <span class="o">==</span> <span class="s2">&quot;directive_option&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">completion_resolve_option</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">item</span>
+
+    <span class="k">def</span> <span class="nf">complete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">CompletionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">CompletionItem</span><span class="p">]:</span>
+
+        <span class="c1"># Do not suggest completions within the middle of Python code.</span>
+        <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">location</span> <span class="o">==</span> <span class="s2">&quot;py&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="n">groups</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()</span>
+
+        <span class="c1"># Are we completing a directive&#39;s options?</span>
+        <span class="k">if</span> <span class="s2">&quot;directive&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">groups</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">complete_options</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+
+        <span class="c1"># Are we completing the directive&#39;s argument?</span>
+        <span class="n">directive_end</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">groups</span><span class="p">[</span><span class="s2">&quot;directive&quot;</span><span class="p">])</span>
+        <span class="n">complete_directive</span> <span class="o">=</span> <span class="n">groups</span><span class="p">[</span><span class="s2">&quot;directive&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;::&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">complete_directive</span> <span class="ow">and</span> <span class="n">directive_end</span> <span class="o">&lt;</span> <span class="n">context</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">character</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">complete_arguments</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">complete_directives</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">complete_arguments</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">CompletionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">CompletionItem</span><span class="p">]:</span>
+        <span class="n">arguments</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+        <span class="n">domain</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;domain&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">arguments</span> <span class="o">+=</span> <span class="n">feature</span><span class="o">.</span><span class="n">complete_arguments</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[]</span>
+
+        <span class="k">return</span> <span class="n">arguments</span>
+
+    <span class="k">def</span> <span class="nf">complete_directives</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">CompletionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">CompletionItem</span><span class="p">]:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Completing directives&quot;</span><span class="p">)</span>
+
+        <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span>
+        <span class="n">groups</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()</span>
+
+        <span class="c1"># Calculate the range of text the CompletionItems should edit.</span>
+        <span class="c1"># If there is an existing argument to the directive, we should leave it untouched</span>
+        <span class="c1"># otherwise, edit the whole line to insert any required arguments.</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+        <span class="n">include_argument</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">snippet_support</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">groups</span><span class="p">[</span><span class="s2">&quot;argument&quot;</span><span class="p">]:</span>
+            <span class="n">include_argument</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">end</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;::&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
+
+        <span class="n">range_</span> <span class="o">=</span> <span class="n">Range</span><span class="p">(</span>
+            <span class="n">start</span><span class="o">=</span><span class="n">Position</span><span class="p">(</span><span class="n">line</span><span class="o">=</span><span class="n">context</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">line</span><span class="p">,</span> <span class="n">character</span><span class="o">=</span><span class="n">start</span><span class="p">),</span>
+            <span class="n">end</span><span class="o">=</span><span class="n">Position</span><span class="p">(</span><span class="n">line</span><span class="o">=</span><span class="n">context</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">line</span><span class="p">,</span> <span class="n">character</span><span class="o">=</span><span class="n">end</span><span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">directive</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">suggest_directives</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+
+            <span class="c1"># TODO: Give better names to arguments based on what they represent.</span>
+            <span class="k">if</span> <span class="n">include_argument</span><span class="p">:</span>
+                <span class="n">insert_format</span> <span class="o">=</span> <span class="n">InsertTextFormat</span><span class="o">.</span><span class="n">Snippet</span>
+                <span class="n">args</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+                    <span class="s2">&quot;${{</span><span class="si">{0}</span><span class="s2">:arg</span><span class="si">{0}</span><span class="s2">}}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">directive</span><span class="o">.</span><span class="n">required_arguments</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">args</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="n">insert_format</span> <span class="o">=</span> <span class="n">InsertTextFormat</span><span class="o">.</span><span class="n">PlainText</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">dotted_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">directive</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">directive</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                <span class="n">dotted_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">directive</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">directive</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span>
+
+            <span class="n">insert_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;.. </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">::</span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span>
+
+            <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">CompletionItem</span><span class="p">(</span>
+                    <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                    <span class="n">kind</span><span class="o">=</span><span class="n">CompletionItemKind</span><span class="o">.</span><span class="n">Class</span><span class="p">,</span>
+                    <span class="n">detail</span><span class="o">=</span><span class="n">dotted_name</span><span class="p">,</span>
+                    <span class="n">filter_text</span><span class="o">=</span><span class="n">insert_text</span><span class="p">,</span>
+                    <span class="n">text_edit</span><span class="o">=</span><span class="n">TextEdit</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="n">range_</span><span class="p">,</span> <span class="n">new_text</span><span class="o">=</span><span class="n">insert_text</span><span class="p">),</span>
+                    <span class="n">insert_text_format</span><span class="o">=</span><span class="n">insert_format</span><span class="p">,</span>
+                    <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;completion_type&quot;</span><span class="p">:</span> <span class="s2">&quot;directive&quot;</span><span class="p">},</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">items</span>
+
+    <span class="k">def</span> <span class="nf">completion_resolve_directive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">CompletionItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CompletionItem</span><span class="p">:</span>
+
+        <span class="c1"># We need the detail field set to the implementation&#39;s fully qualified name.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">detail</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">item</span>
+
+        <span class="n">documentation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_documentation</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">label</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">detail</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">documentation</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">item</span>
+
+        <span class="n">description</span> <span class="o">=</span> <span class="n">documentation</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">is_markdown</span> <span class="o">=</span> <span class="n">documentation</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;is_markdown&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">kind</span> <span class="o">=</span> <span class="n">MarkupKind</span><span class="o">.</span><span class="n">Markdown</span> <span class="k">if</span> <span class="n">is_markdown</span> <span class="k">else</span> <span class="n">MarkupKind</span><span class="o">.</span><span class="n">PlainText</span>
+
+        <span class="n">item</span><span class="o">.</span><span class="n">documentation</span> <span class="o">=</span> <span class="n">MarkupContent</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">description</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">item</span>
+
+    <span class="k">def</span> <span class="nf">complete_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">CompletionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">CompletionItem</span><span class="p">]:</span>
+
+        <span class="n">surrounding_directive</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_surrounding_directive</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">surrounding_directive</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="n">name</span> <span class="o">=</span> <span class="n">surrounding_directive</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+        <span class="n">domain</span> <span class="o">=</span> <span class="n">surrounding_directive</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;domain&quot;</span><span class="p">)</span>
+        <span class="n">impl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_implementation</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">impl</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span>
+        <span class="n">groups</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()</span>
+        <span class="n">impl_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">impl</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">impl</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="n">option</span> <span class="o">=</span> <span class="n">groups</span><span class="p">[</span><span class="s2">&quot;option&quot;</span><span class="p">]</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
+
+        <span class="n">range_</span> <span class="o">=</span> <span class="n">Range</span><span class="p">(</span>
+            <span class="n">start</span><span class="o">=</span><span class="n">Position</span><span class="p">(</span><span class="n">line</span><span class="o">=</span><span class="n">context</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">line</span><span class="p">,</span> <span class="n">character</span><span class="o">=</span><span class="n">start</span><span class="p">),</span>
+            <span class="n">end</span><span class="o">=</span><span class="n">Position</span><span class="p">(</span><span class="n">line</span><span class="o">=</span><span class="n">context</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">line</span><span class="p">,</span> <span class="n">character</span><span class="o">=</span><span class="n">end</span><span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">option</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">suggest_options</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span>
+            <span class="n">insert_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;:</span><span class="si">{</span><span class="n">option</span><span class="si">}</span><span class="s2">:&quot;</span>
+
+            <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">CompletionItem</span><span class="p">(</span>
+                    <span class="n">label</span><span class="o">=</span><span class="n">option</span><span class="p">,</span>
+                    <span class="n">detail</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">impl_name</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">option</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                    <span class="n">kind</span><span class="o">=</span><span class="n">CompletionItemKind</span><span class="o">.</span><span class="n">Field</span><span class="p">,</span>
+                    <span class="n">filter_text</span><span class="o">=</span><span class="n">insert_text</span><span class="p">,</span>
+                    <span class="n">text_edit</span><span class="o">=</span><span class="n">TextEdit</span><span class="p">(</span><span class="nb">range</span><span class="o">=</span><span class="n">range_</span><span class="p">,</span> <span class="n">new_text</span><span class="o">=</span><span class="n">insert_text</span><span class="p">),</span>
+                    <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+                        <span class="s2">&quot;completion_type&quot;</span><span class="p">:</span> <span class="s2">&quot;directive_option&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;for_directive&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+                    <span class="p">},</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">items</span>
+
+    <span class="k">def</span> <span class="nf">completion_resolve_option</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">CompletionItem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CompletionItem</span><span class="p">:</span>
+
+        <span class="c1"># We need the detail field set to the implementation&#39;s fully qualified name.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">detail</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">item</span>
+
+        <span class="n">directive</span><span class="p">,</span> <span class="n">option</span> <span class="o">=</span> <span class="n">item</span><span class="o">.</span><span class="n">detail</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">typing</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">Dict</span><span class="p">,</span> <span class="n">item</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;for_directive&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+        <span class="n">documentation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_documentation</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">directive</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">documentation</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">item</span>
+
+        <span class="n">description</span> <span class="o">=</span> <span class="n">documentation</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;options&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">option</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">description</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">item</span>
+
+        <span class="n">source</span> <span class="o">=</span> <span class="n">documentation</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">license</span> <span class="o">=</span> <span class="n">documentation</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;license&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">source</span><span class="p">:</span>
+            <span class="n">description</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">[Source](</span><span class="si">{</span><span class="n">source</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+        <span class="k">if</span> <span class="n">license</span><span class="p">:</span>
+            <span class="n">description</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">[License](</span><span class="si">{</span><span class="n">license</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+        <span class="n">kind</span> <span class="o">=</span> <span class="n">MarkupKind</span><span class="o">.</span><span class="n">PlainText</span>
+        <span class="k">if</span> <span class="n">documentation</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;is_markdown&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="n">kind</span> <span class="o">=</span> <span class="n">MarkupKind</span><span class="o">.</span><span class="n">Markdown</span>
+
+        <span class="n">item</span><span class="o">.</span><span class="n">documentation</span> <span class="o">=</span> <span class="n">MarkupContent</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">description</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">item</span>
+
+    <span class="k">def</span> <span class="nf">definition</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">DefinitionContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Location</span><span class="p">]:</span>
+
+        <span class="n">directive</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+        <span class="n">domain</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;domain&quot;</span><span class="p">)</span>
+        <span class="n">argument</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;argument&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">argument</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="n">start</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">context</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">character</span> <span class="o">&lt;=</span> <span class="n">end</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_argument_definition</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">directive</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">argument</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">find_argument_definition</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">context</span><span class="p">:</span> <span class="n">DefinitionContext</span><span class="p">,</span>
+        <span class="n">directive</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">domain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span>
+        <span class="n">argument</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Location</span><span class="p">]:</span>
+
+        <span class="n">definitions</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">feature_name</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">definitions</span> <span class="o">+=</span> <span class="p">(</span>
+                    <span class="n">feature</span><span class="o">.</span><span class="n">find_argument_definitions</span><span class="p">(</span>
+                        <span class="n">context</span><span class="p">,</span> <span class="n">directive</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">argument</span>
+                    <span class="p">)</span>
+                    <span class="ow">or</span> <span class="p">[]</span>
+                <span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                    <span class="s2">&quot;Unable to find definitions of &#39;</span><span class="si">%s</span><span class="s2">&#39; for directive &#39;</span><span class="si">%s</span><span class="s2">&#39;, &quot;</span>
+                    <span class="s2">&quot;error in feature: &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span>
+                    <span class="n">argument</span><span class="p">,</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">directive</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">domain</span> <span class="k">else</span> <span class="n">directive</span><span class="p">,</span>
+                    <span class="n">feature_name</span><span class="p">,</span>
+                    <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">definitions</span>
+
+    <span class="k">def</span> <span class="nf">resolve_argument_link</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">DocumentLinkContext</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">domain</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">argument</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+
+        <span class="k">for</span> <span class="n">feature_name</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">target</span><span class="p">,</span> <span class="n">tooltip</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">resolve_argument_link</span><span class="p">(</span>
+                    <span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">argument</span>
+                <span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">target</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">target</span><span class="p">,</span> <span class="n">tooltip</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                    <span class="s2">&quot;Unable to resolve argument link &#39;</span><span class="si">%s</span><span class="s2">&#39; for directive &#39;</span><span class="si">%s</span><span class="s2">&#39;, &quot;</span>
+                    <span class="s2">&quot;error in feature: &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span>
+                    <span class="n">argument</span><span class="p">,</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">domain</span> <span class="k">else</span> <span class="n">name</span><span class="p">,</span>
+                    <span class="n">feature_name</span><span class="p">,</span>
+                    <span class="n">exc_info</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="p">)</span>
+
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">document_link</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">DocumentLinkContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">DocumentLink</span><span class="p">]:</span>
+        <span class="n">links</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">line</span><span class="p">,</span> <span class="n">text</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">lines</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">DIRECTIVE</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+
+                <span class="n">argument</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;argument&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">argument</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+                <span class="n">domain</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;domain&quot;</span><span class="p">)</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+
+                <span class="n">target</span><span class="p">,</span> <span class="n">tooltip</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolve_argument_link</span><span class="p">(</span>
+                    <span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">argument</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">target</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+                <span class="n">idx</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span>
+                <span class="n">start</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="o">+</span> <span class="n">idx</span>
+                <span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">argument</span><span class="p">)</span>
+
+                <span class="n">links</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="n">DocumentLink</span><span class="p">(</span>
+                        <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+                        <span class="n">tooltip</span><span class="o">=</span><span class="n">tooltip</span> <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">tooltip_support</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+                        <span class="nb">range</span><span class="o">=</span><span class="n">Range</span><span class="p">(</span>
+                            <span class="n">start</span><span class="o">=</span><span class="n">Position</span><span class="p">(</span><span class="n">line</span><span class="o">=</span><span class="n">line</span><span class="p">,</span> <span class="n">character</span><span class="o">=</span><span class="n">start</span><span class="p">),</span>
+                            <span class="n">end</span><span class="o">=</span><span class="n">Position</span><span class="p">(</span><span class="n">line</span><span class="o">=</span><span class="n">line</span><span class="p">,</span> <span class="n">character</span><span class="o">=</span><span class="n">end</span><span class="p">),</span>
+                        <span class="p">),</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">links</span>
+
+    <span class="k">def</span> <span class="nf">hover</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">HoverContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">location</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;rst&quot;</span><span class="p">,</span> <span class="s2">&quot;docstring&quot;</span><span class="p">}:</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="n">name</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+        <span class="n">domain</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;domain&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Determine if the hover is on the .. directive::  itself, or within the argument</span>
+        <span class="c1"># Be sure to include enough chars for the length of &#39;::&#39;!</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">character</span> <span class="o">-</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="n">prefix</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)[:</span><span class="n">idx</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="s2">&quot;::&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">prefix</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">hover_directive</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
+
+        <span class="c1"># TODO: Add extension points for directive arguments and options.</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">hover_directive</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">HoverContext</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">domain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+
+        <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">domain</span> <span class="k">else</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Calculating hover for directive &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+
+        <span class="n">directive</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_implementation</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">directive</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">dotted_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">directive</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">directive</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">dotted_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">directive</span><span class="o">.</span><span class="vm">__module__</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">directive</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="n">documentation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_documentation</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">dotted_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">documentation</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">documentation</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">implementation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">ImplementationContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Location</span><span class="p">]:</span>
+
+        <span class="n">region</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;directive&quot;</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+        <span class="n">domain</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;domain&quot;</span><span class="p">)</span>
+
+        <span class="n">start</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">context</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">character</span> <span class="o">&lt;=</span> <span class="n">end</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_directive_implementation</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">find_directive_implementation</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">ImplementationContext</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">domain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Location</span><span class="p">]:</span>
+
+        <span class="n">impl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_implementation</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">impl</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="s2">&quot;Getting implementation of &#39;</span><span class="si">%s</span><span class="s2">&#39; (</span><span class="si">%s</span><span class="s2">)&quot;</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">domain</span> <span class="k">else</span> <span class="n">name</span><span class="p">,</span>
+            <span class="n">impl</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">get_object_location</span><span class="p">(</span><span class="n">impl</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">location</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">location</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">_get_surrounding_directive</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">CompletionContext</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;re.Match&quot;</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Used to determine which directive we should be offering completions for.</span>
+
+<span class="sd">        When suggestions should be generated this returns an :class:`python:re.Match`</span>
+<span class="sd">        object representing the directive the options are associated with. In the</span>
+<span class="sd">        case where suggestions should not be generated this will return ``None``</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        context:</span>
+<span class="sd">          The completion context</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">match</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">match</span>
+        <span class="n">groups</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">groupdict</span><span class="p">()</span>
+        <span class="n">indent</span> <span class="o">=</span> <span class="n">groups</span><span class="p">[</span><span class="s2">&quot;indent&quot;</span><span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Match groups: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">groups</span><span class="p">)</span>
+
+        <span class="c1"># Search backwards so that we can determine the context for our completion</span>
+        <span class="n">linum</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">line</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="n">linum</span><span class="p">]</span>
+
+        <span class="k">while</span> <span class="n">linum</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">indent</span><span class="p">):</span>
+            <span class="n">linum</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="n">doc</span><span class="o">.</span><span class="n">lines</span><span class="p">[</span><span class="n">linum</span><span class="p">]</span>
+
+        <span class="c1"># Only offer completions if we&#39;re within a directive&#39;s option block</span>
+        <span class="n">directive</span> <span class="o">=</span> <span class="n">DIRECTIVE</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Context line:  </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Context match: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">directive</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">directive</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="c1"># Now that we know we&#39;re in a directive&#39;s option block, is the completion</span>
+        <span class="c1"># request coming from a valid position on the line?</span>
+        <span class="n">option</span> <span class="o">=</span> <span class="n">groups</span><span class="p">[</span><span class="s2">&quot;option&quot;</span><span class="p">]</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">option</span><span class="p">)</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">start</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">option</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">context</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">character</span> <span class="o">&lt;=</span> <span class="n">end</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">directive</span>
+
+        <span class="k">return</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="Directives.get_documentation"><a class="viewcode-back" href="../../../lsp/extending/directives.html#esbonio.lsp.directives.Directives.get_documentation">[docs]</a>    <span class="k">def</span> <span class="nf">get_documentation</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">label</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">implementation</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;Return the documentation for the given directive, if available.</span>
+
+<span class="sd">        If documentation for the given ``label`` cannot be found, this function will also</span>
+<span class="sd">        look for the label under the project&#39;s :confval:`sphinx:primary_domain` followed</span>
+<span class="sd">        by the ``std`` domain.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        label</span>
+<span class="sd">           The name of the directive, as the user would type in an reStructuredText file.</span>
+
+<span class="sd">        implementation</span>
+<span class="sd">           The full dotted name of the directive&#39;s implementation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">implementation</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="n">documentation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_documentation</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">documentation</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">documentation</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rst</span><span class="p">,</span> <span class="n">SphinxLanguageServer</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">rst</span><span class="o">.</span><span class="n">app</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="c1"># Nothing found, try the primary domain</span>
+        <span class="n">domain</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rst</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">primary_domain</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">implementation</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+        <span class="n">documentation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_documentation</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">documentation</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">documentation</span>
+
+        <span class="c1"># Still nothing, try the standard domain</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;std:</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">implementation</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+        <span class="n">documentation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_documentation</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">documentation</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">documentation</span>
+
+        <span class="k">return</span> <span class="kc">None</span></div></div>
+
+
+<span class="k">def</span> <span class="nf">esbonio_setup</span><span class="p">(</span><span class="n">rst</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">):</span>
+    <span class="n">rst</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">Directives</span><span class="p">(</span><span class="n">rst</span><span class="p">))</span>
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/scripts/furo.js"></script>
+    </body>
+</html>

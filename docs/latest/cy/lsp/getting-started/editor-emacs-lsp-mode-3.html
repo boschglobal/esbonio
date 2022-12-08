@@ -1,0 +1,80 @@
+<ul class="simple">
+
+<li>
+<p>
+<code class="docutils literal notranslate">
+<span class="pre">lsp-mode-minimal.el</span>
+</code>
+: A barebones configuration, useful for debugging.
+</p>
+</li>
+
+<li>
+<p>
+<code class="docutils literal notranslate">
+<span class="pre">lsp-mode-extended.el</span>
+</code>
+: A slightly more advanced configuration which demonstrates
+a few more features of the language server.
+</p>
+</li>
+
+</ul>
+
+<p>
+To try one of these configurations out.
+</p>
+
+
+<ol class="arabic">
+
+<li>
+<p>
+Download 
+<a class="reference download internal" download="" href="../_downloads/bf066535b48c2b39ca04a7a4d95902d1/lsp-mode-minimal.el">
+<code class="xref download docutils literal notranslate">
+<span class="pre">lsp-mode-minimal.el</span>
+</code>
+</a>
+
+or 
+<a class="reference download internal" download="" href="../_downloads/74630f9da5df77629029f77b8433e0e4/lsp-mode-extended.el">
+<code class="xref download docutils literal notranslate">
+<span class="pre">lsp-mode-extended.el</span>
+</code>
+</a>
+
+to a folder of your choosing (not your 
+<code class="docutils literal notranslate">
+<span class="pre">.emacs.d/</span>
+</code>
+).
+</p>
+</li>
+
+<li>
+<p>
+Activate the virtual environment you installed the language server into:
+</p>
+
+
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">source</span> .env/bin/activate
+</pre></div>
+</div>
+
+</li>
+
+<li>
+<p>
+Run the following command to launch a separate instance of Emacs, isolated from your
+usual configuration:
+</p>
+
+
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.env)</span> <span class="gp">$ </span>emacs -Q -l lsp-mode-minimal.el  <span class="c1"># or lsp-mode-extended.el</span>
+</pre></div>
+</div>
+
+</li>
+
+</ol>

@@ -1,0 +1,215 @@
+<p>
+Kate’s LSP client is provided via a plugin that needs to be enabled if you’re using
+it for the first time.
+</p>
+
+
+<ol class="arabic">
+
+<li>
+<p>
+Open Kate’s settings through the 
+<span class="guilabel">
+Settings -&gt; Configure Kate…
+</span>
+ menu,
+or with the 
+<kbd class="kbd compound docutils literal notranslate">
+<kbd class="kbd docutils literal notranslate">
+Ctrl
+</kbd>
++
+<kbd class="kbd docutils literal notranslate">
+Shift
+</kbd>
++
+<kbd class="kbd docutils literal notranslate">
+,
+</kbd>
+</kbd>
+ shortcut.
+</p>
+</li>
+
+<li>
+<p>
+Select the 
+<span class="guilabel">
+Plugins
+</span>
+ section on the left hand side find the
+
+<span class="guilabel">
+LSP Client
+</span>
+ plugin and ensure that it’s checked.
+</p>
+
+
+<figure class="align-center" id="id8">
+
+<a class="reference internal image-reference" href="../_images/kate-plugin-settings.png">
+<img alt="../_images/kate-plugin-settings.png" src="../_images/kate-plugin-settings.png" style="width: 80%;" />
+</a>
+
+
+<figcaption>
+
+<p>
+<span class="caption-text">
+Kate’s 
+<span class="guilabel">
+Plugins
+</span>
+ settings.
+</span>
+<a class="headerlink" href="#id8" title="Permalink to this image">#</a>
+</p>
+
+</figcaption>
+
+</figure>
+
+</li>
+
+<li>
+<p>
+Once checked a new 
+<span class="guilabel">
+LSP Client
+</span>
+ section should appear at the bottom of the
+list. Open it and select the 
+<span class="guilabel">
+User Server Settings
+</span>
+ tab.
+</p>
+</li>
+
+<li>
+<p>
+This should open up a text box where you can enter some JSON to tell Kate how and
+when to start the language server.
+</p>
+
+
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;servers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;rst&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;-m&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;esbonio&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;initializationOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;sphinx&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;srcDir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">          </span><span class="nt">&quot;confDir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;server&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;rootIndicationFileNames&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;conf.py&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;highlightingModeRegex&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^reStructuredText$&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+
+<p>
+For more details general LSP configuration have a look at 
+<a class="reference external" href="https://docs.kde.org/stable5/en/kate/kate/kate-application-plugin-lspclient.html">
+Kate’s LSP Client
+</a>
+
+documentation.
+</p>
+
+
+</li>
+
+<li>
+<p>
+Once you’re happy with your configuration be sure to hit the 
+<span class="guilabel">
+Apply
+</span>
+ button for
+it to take effect!
+</p>
+
+
+<figure class="align-center" id="id9">
+
+<a class="reference internal image-reference" href="../_images/kate-lsp-settings.png">
+<img alt="../_images/kate-lsp-settings.png" src="../_images/kate-lsp-settings.png" style="width: 80%;" />
+</a>
+
+
+<figcaption>
+
+<p>
+<span class="caption-text">
+Kate’s 
+<span class="guilabel">
+LSP Client
+</span>
+ settings with an example Esbonio config.
+</span>
+<a class="headerlink" href="#id9" title="Permalink to this image">#</a>
+</p>
+
+</figcaption>
+
+</figure>
+
+</li>
+
+</ol>
+
+<div class="admonition note">
+
+<p class="admonition-title">
+Note
+</p>
+
+<p>
+<strong>
+Python Environments
+</strong>
+</p>
+
+
+<p>
+In order for the language server to function correctly it needs to be installed into and
+run from the same Python environment as the one used to build your documentation. In order
+for Kate to correctly determine the right Python environment to use, you can either
+</p>
+
+
+<ul>
+
+<li>
+<p>
+Modify the 
+<code class="docutils literal notranslate">
+<span class="pre">command</span>
+</code>
+ array in your LSP Config to use the full path to the
+correct Python, or
+</p>
+</li>
+
+<li>
+<p>
+Start Kate from the terminal with the correct Python environment activated:
+</p>
+
+
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(.env) $ kate
+</pre></div>
+</div>
+
+</li>
+
+</ul>
+
+</div>
+

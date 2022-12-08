@@ -1,0 +1,35 @@
+<p>
+The language server’s configuration options can be passed a 
+<code class="docutils literal notranslate">
+<span class="pre">initialization_options</span>
+</code>
+ during the
+server’s setup. These can be set on a per-project basis by creating a 
+<code class="docutils literal notranslate">
+<span class="pre">.vim-lsp-settings/settings.json</span>
+</code>
+
+file in the root of your project
+</p>
+
+
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;esbonio&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;initialization_options&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;server&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;logLevel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;debug&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">},</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;sphinx&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;confDir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/path/to/docs&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;srcDir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${confDir}/../docs-src&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+
+<p>
+The following is a list of the availble options.
+</p>
+

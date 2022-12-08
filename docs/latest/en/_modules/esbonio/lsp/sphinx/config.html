@@ -1,0 +1,974 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Index" href="../../../../genindex.html" /><link rel="search" title="Search" href="../../../../search.html" />
+
+    <link rel="shortcut icon" href="../../../../_static/favicon.svg"/><!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
+        <title>esbonio.lsp.sphinx.config - Esbonio</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     This is the unstable version of the documentation, features may change or be removed without warning. <a href="/esbonio/docs/stable/en/">Click here</a> to view the released version 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../../../index.html"><div class="brand">Esbonio</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../../../_static/io.github.swyddfa.Esbonio.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Esbonio</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Language Server</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lsp/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../lsp/advanced-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../lsp/extending.html">Extending</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../lsp/extending/directives.html">Directives</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lsp/extending/directives/directive-registry.html">Supporting Custom Directive Registries</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../../../lsp/extending/roles.html">Roles</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../lsp/extending/roles/role-registry.html">Supporting Custom Role Registries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lsp/extending/api-reference.html">API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../lsp/how-to.html">How To</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../lsp/how-to/get-debug-info.html">How To: Get Debug Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sphinx Extensions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../extensions/relevant_to.html">Relevent To</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../../../extensions/tutorial.html">Tutorial</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../extensions/tutorial/formatting-example.html">Formatting Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../extensions/tutorial/hello-world.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../extensions/tutorial/solution-example.html">Solution Example</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../contributing/devenvs.html">Development Environments</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <h1>Source code for esbonio.lsp.sphinx.config</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">inspect</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">multiprocessing</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">from</span> <span class="nn">types</span> <span class="kn">import</span> <span class="n">ModuleType</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">unittest</span> <span class="kn">import</span> <span class="n">mock</span>
+
+<span class="kn">import</span> <span class="nn">appdirs</span>
+<span class="kn">import</span> <span class="nn">pygls.uris</span> <span class="k">as</span> <span class="nn">Uri</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">Field</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">Diagnostic</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">DiagnosticSeverity</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">Position</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">Range</span>
+<span class="kn">from</span> <span class="nn">sphinx.application</span> <span class="kn">import</span> <span class="n">Sphinx</span>
+<span class="kn">from</span> <span class="nn">sphinx.cmd.build</span> <span class="kn">import</span> <span class="n">main</span> <span class="k">as</span> <span class="n">sphinx_build</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.logging</span> <span class="kn">import</span> <span class="n">OnceFilter</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.logging</span> <span class="kn">import</span> <span class="n">SphinxLogRecord</span>
+<span class="kn">from</span> <span class="nn">sphinx.util.logging</span> <span class="kn">import</span> <span class="n">WarningLogRecordTranslator</span>
+<span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Literal</span>
+
+<span class="kn">from</span> <span class="nn">esbonio.lsp.log</span> <span class="kn">import</span> <span class="n">LOG_NAMESPACE</span>
+<span class="kn">from</span> <span class="nn">esbonio.lsp.log</span> <span class="kn">import</span> <span class="n">LspHandler</span>
+<span class="kn">from</span> <span class="nn">esbonio.lsp.rst</span> <span class="kn">import</span> <span class="n">ServerConfig</span>
+
+<span class="n">PATH_VAR_PATTERN</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^\${(\w+)}/?.*&quot;</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">LOG_NAMESPACE</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="MissingConfigError"><a class="viewcode-back" href="../../../../lsp/extending/api-reference.html#esbonio.lsp.sphinx.MissingConfigError">[docs]</a><span class="k">class</span> <span class="nc">MissingConfigError</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Indicates that we couldn&#39;t locate the project&#39;s &#39;conf.py&#39;&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="SphinxConfig"><a class="viewcode-back" href="../../../../lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig">[docs]</a><span class="k">class</span> <span class="nc">SphinxConfig</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Configuration values to pass to the Sphinx application instance.&quot;&quot;&quot;</span>
+
+    <span class="n">build_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;buildDir&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;The directory to write build outputs into.&quot;&quot;&quot;</span>
+
+    <span class="n">builder_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;builderName&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;The currently used builder name.&quot;&quot;&quot;</span>
+
+    <span class="n">conf_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;confDir&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;The directory containing the project&#39;s ``conf.py``.&quot;&quot;&quot;</span>
+
+    <span class="n">config_overrides</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span>
+        <span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;configOverrides&quot;</span>
+    <span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;Any overrides to configuration values.&quot;&quot;&quot;</span>
+
+    <span class="n">doctree_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;doctreeDir&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;The directory to write doctrees into.&quot;&quot;&quot;</span>
+
+    <span class="n">force_full_build</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;forceFullBuild&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;Force a full build on startup.&quot;&quot;&quot;</span>
+
+    <span class="n">keep_going</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;keepGoing&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;Continue building when errors (from warnings) are encountered.&quot;&quot;&quot;</span>
+
+    <span class="n">make_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;makeMode&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;Flag indicating if the server should align to &quot;make mode&quot; behavior.&quot;&quot;&quot;</span>
+
+    <span class="n">num_jobs</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;auto&quot;</span><span class="p">],</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;numJobs&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;The number of jobs to use for parallel builds.&quot;&quot;&quot;</span>
+
+    <span class="n">quiet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;Hide standard Sphinx output messages&quot;&quot;&quot;</span>
+
+    <span class="n">silent</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;Hide all Sphinx output.&quot;&quot;&quot;</span>
+
+    <span class="n">src_dir</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;srcDir&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;The directory containing the project&#39;s source.&quot;&quot;&quot;</span>
+
+    <span class="n">tags</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;Tags to enable during a build.&quot;&quot;&quot;</span>
+
+    <span class="n">verbosity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;The verbosity of Sphinx&#39;s output.&quot;&quot;&quot;</span>
+
+    <span class="n">warning_is_error</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;warningIsError&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;Treat any warning as an error&quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">parallel</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The parsed value of the ``num_jobs`` field.&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_jobs</span> <span class="o">==</span> <span class="s2">&quot;auto&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_jobs</span>
+
+<div class="viewcode-block" id="SphinxConfig.from_arguments"><a class="viewcode-back" href="../../../../lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.from_arguments">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_arguments</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">cli_args</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">sphinx_args</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;SphinxConfig&quot;</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return the ``SphinxConfig`` instance that&#39;s equivalent to the given arguments.</span>
+
+<span class="sd">        .. note::</span>
+
+<span class="sd">            Only ``cli_args`` **or** ``sphinx_args`` may be given.</span>
+
+<span class="sd">        .. warning::</span>
+
+<span class="sd">            This method is unable to determine the value of the</span>
+<span class="sd">            :obj:`SphinxConfig.make_mode` setting when passing ``sphinx_args``</span>
+
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        cli_args</span>
+<span class="sd">           The cli arguments you would normally pass to ``sphinx-build``</span>
+
+<span class="sd">        sphinx_args:</span>
+<span class="sd">           The arguments you would use to create a ``Sphinx`` application instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">make_mode</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">neither_given</span> <span class="o">=</span> <span class="n">cli_args</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">sphinx_args</span> <span class="ow">is</span> <span class="kc">None</span>
+        <span class="n">both_given</span> <span class="o">=</span> <span class="n">cli_args</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">sphinx_args</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">neither_given</span> <span class="ow">or</span> <span class="n">both_given</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;You must pass either &#39;cli_args&#39; or &#39;sphinx_args&#39;&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">cli_args</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># The easiest way to handle this is to just call sphinx-build but with</span>
+            <span class="c1"># the Sphinx app object patched out - then we just use all the args it</span>
+            <span class="c1"># was given!</span>
+            <span class="k">with</span> <span class="n">mock</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s2">&quot;sphinx.cmd.build.Sphinx&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">m_Sphinx</span><span class="p">:</span>
+                <span class="n">sphinx_build</span><span class="p">(</span><span class="n">cli_args</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">m_Sphinx</span><span class="o">.</span><span class="n">call_args</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span>
+
+            <span class="n">signature</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">Sphinx</span><span class="p">)</span>
+            <span class="n">keys</span> <span class="o">=</span> <span class="n">signature</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+            <span class="n">values</span> <span class="o">=</span> <span class="n">m_Sphinx</span><span class="o">.</span><span class="n">call_args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">sphinx_args</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">)}</span>
+
+            <span class="c1"># `-M` has to be the first argument passed to `sphinx-build`</span>
+            <span class="c1"># https://github.com/sphinx-doc/sphinx/blob/1222bed88eb29cde43a81dd208448dc903c53de2/sphinx/cmd/build.py#L287</span>
+            <span class="n">make_mode</span> <span class="o">=</span> <span class="n">cli_args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;-M&quot;</span>
+            <span class="k">if</span> <span class="n">make_mode</span> <span class="ow">and</span> <span class="n">sphinx_args</span><span class="p">[</span><span class="s2">&quot;outdir&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">sphinx_args</span><span class="p">[</span><span class="s2">&quot;buildername&quot;</span><span class="p">]):</span>
+                <span class="n">build_dir</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">sphinx_args</span><span class="p">[</span><span class="s2">&quot;outdir&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">parts</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">sphinx_args</span><span class="p">[</span><span class="s2">&quot;outdir&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="o">*</span><span class="n">build_dir</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">sphinx_args</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">confDir</span><span class="o">=</span><span class="n">sphinx_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;confdir&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="n">configOverrides</span><span class="o">=</span><span class="n">sphinx_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;confoverrides&quot;</span><span class="p">,</span> <span class="p">{}),</span>
+            <span class="n">buildDir</span><span class="o">=</span><span class="n">sphinx_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;outdir&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="n">builderName</span><span class="o">=</span><span class="n">sphinx_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;buildername&quot;</span><span class="p">,</span> <span class="s2">&quot;html&quot;</span><span class="p">),</span>
+            <span class="n">doctreeDir</span><span class="o">=</span><span class="n">sphinx_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;doctreedir&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="n">forceFullBuild</span><span class="o">=</span><span class="n">sphinx_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;freshenv&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="n">keepGoing</span><span class="o">=</span><span class="n">sphinx_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;keep_going&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="n">makeMode</span><span class="o">=</span><span class="n">make_mode</span><span class="p">,</span>
+            <span class="n">numJobs</span><span class="o">=</span><span class="n">sphinx_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;parallel&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">quiet</span><span class="o">=</span><span class="n">sphinx_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;status&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">silent</span><span class="o">=</span><span class="n">sphinx_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;warning&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">srcDir</span><span class="o">=</span><span class="n">sphinx_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;srcdir&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="n">tags</span><span class="o">=</span><span class="n">sphinx_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;tags&quot;</span><span class="p">,</span> <span class="p">[]),</span>
+            <span class="n">verbosity</span><span class="o">=</span><span class="n">sphinx_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;verbosity&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="n">warningIsError</span><span class="o">=</span><span class="n">sphinx_args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;warningiserror&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="SphinxConfig.to_cli_args"><a class="viewcode-back" href="../../../../lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.to_cli_args">[docs]</a>    <span class="k">def</span> <span class="nf">to_cli_args</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Convert this into the equivalent ``sphinx-build`` cli arguments.&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_mode</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_make_cli_args</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_cli_args</span><span class="p">()</span></div>
+
+    <span class="k">def</span> <span class="nf">_build_make_cli_args</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;-M&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder_name</span><span class="p">]</span>
+        <span class="n">conf_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conf_dir</span> <span class="ow">or</span> <span class="s2">&quot;$</span><span class="si">{workspaceRoot}</span><span class="s2">&quot;</span>
+        <span class="n">src_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">src_dir</span> <span class="ow">or</span> <span class="n">conf_dir</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_dir</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">build_dir</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">src_dir</span><span class="p">,</span> <span class="s2">&quot;_build&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">build_dir</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">build_dir</span><span class="p">)</span>
+
+        <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="n">src_dir</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">build_dir</span><span class="p">)]</span>
+
+        <span class="n">args</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_standard_args</span><span class="p">()</span>
+        <span class="n">default_dtree_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">build_dir</span><span class="p">,</span> <span class="s2">&quot;doctrees&quot;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">doctree_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">doctree_dir</span> <span class="o">!=</span> <span class="n">default_dtree_dir</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;-d&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">doctree_dir</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">args</span>
+
+    <span class="k">def</span> <span class="nf">_build_cli_args</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;-b&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder_name</span><span class="p">]</span>
+
+        <span class="n">conf_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conf_dir</span> <span class="ow">or</span> <span class="s2">&quot;$</span><span class="si">{workspaceRoot}</span><span class="s2">&quot;</span>
+        <span class="n">src_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">src_dir</span> <span class="ow">or</span> <span class="n">conf_dir</span>
+
+        <span class="n">build_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_dir</span> <span class="ow">or</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">src_dir</span><span class="p">,</span> <span class="s2">&quot;_build&quot;</span><span class="p">)</span>
+        <span class="n">default_dtree_dir</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">build_dir</span><span class="p">,</span> <span class="s2">&quot;.doctrees&quot;</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">doctree_dir</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">doctree_dir</span> <span class="o">!=</span> <span class="n">default_dtree_dir</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;-d&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">doctree_dir</span><span class="p">]</span>
+
+        <span class="n">args</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_standard_args</span><span class="p">()</span>
+        <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="n">src_dir</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">build_dir</span><span class="p">)]</span>
+        <span class="k">return</span> <span class="n">args</span>
+
+    <span class="k">def</span> <span class="nf">_build_standard_args</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="n">args</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">conf_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conf_dir</span> <span class="ow">or</span> <span class="s2">&quot;$</span><span class="si">{workspaceRoot}</span><span class="s2">&quot;</span>
+        <span class="n">src_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">src_dir</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">conf_dir</span>
+
+        <span class="k">if</span> <span class="n">conf_dir</span> <span class="o">!=</span> <span class="n">src_dir</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="n">conf_dir</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_full_build</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;-E&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parallel</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;-j&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_jobs</span><span class="p">)]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">silent</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;-Q&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">quiet</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">silent</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;-q&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">warning_is_error</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;-W&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">keep_going</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;--keep-going&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbosity</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="p">(</span><span class="s2">&quot;v&quot;</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbosity</span><span class="p">)]</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_overrides</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+            <span class="k">if</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;nitpicky&quot;</span><span class="p">:</span>
+                <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;-n&quot;</span><span class="p">]</span>
+                <span class="k">continue</span>
+
+            <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;html_context.&quot;</span><span class="p">):</span>
+                <span class="n">char</span> <span class="o">=</span> <span class="s2">&quot;A&quot;</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;html_context.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">char</span> <span class="o">=</span> <span class="s2">&quot;D&quot;</span>
+
+            <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;-</span><span class="si">{</span><span class="n">char</span><span class="si">}{</span><span class="n">key</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">+=</span> <span class="p">[</span><span class="s2">&quot;-t&quot;</span><span class="p">,</span> <span class="n">tag</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">args</span>
+
+<div class="viewcode-block" id="SphinxConfig.to_application_args"><a class="viewcode-back" href="../../../../lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.to_application_args">[docs]</a>    <span class="k">def</span> <span class="nf">to_application_args</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Convert this into the equivalent Sphinx application arguments.&quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;buildername&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder_name</span><span class="p">,</span>
+            <span class="s2">&quot;confdir&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">conf_dir</span><span class="p">,</span>
+            <span class="s2">&quot;confoverrides&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">config_overrides</span><span class="p">,</span>
+            <span class="s2">&quot;doctreedir&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">doctree_dir</span><span class="p">,</span>
+            <span class="s2">&quot;freshenv&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_full_build</span><span class="p">,</span>
+            <span class="s2">&quot;keep_going&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">keep_going</span><span class="p">,</span>
+            <span class="s2">&quot;outdir&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_dir</span><span class="p">,</span>
+            <span class="s2">&quot;parallel&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">parallel</span><span class="p">,</span>
+            <span class="s2">&quot;srcdir&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">src_dir</span><span class="p">,</span>
+            <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;tags&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span>
+            <span class="s2">&quot;verbosity&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">verbosity</span><span class="p">,</span>
+            <span class="s2">&quot;warning&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="s2">&quot;warningiserror&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">warning_is_error</span><span class="p">,</span>
+        <span class="p">}</span></div>
+
+    <span class="k">def</span> <span class="nf">resolve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_uri</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;SphinxConfig&quot;</span><span class="p">:</span>
+        <span class="n">conf_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolve_conf_dir</span><span class="p">(</span><span class="n">root_uri</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">conf_dir</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">MissingConfigError</span><span class="p">()</span>
+
+        <span class="n">src_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolve_src_dir</span><span class="p">(</span><span class="n">root_uri</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">conf_dir</span><span class="p">))</span>
+        <span class="n">build_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolve_build_dir</span><span class="p">(</span><span class="n">root_uri</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">conf_dir</span><span class="p">))</span>
+        <span class="n">doctree_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolve_doctree_dir</span><span class="p">(</span><span class="n">root_uri</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">conf_dir</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">build_dir</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_mode</span><span class="p">:</span>
+            <span class="n">build_dir</span> <span class="o">/=</span> <span class="bp">self</span><span class="o">.</span><span class="n">builder_name</span>
+
+        <span class="k">return</span> <span class="n">SphinxConfig</span><span class="p">(</span>
+            <span class="n">confDir</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">conf_dir</span><span class="p">),</span>
+            <span class="n">configOverrides</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config_overrides</span><span class="p">,</span>
+            <span class="n">buildDir</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">build_dir</span><span class="p">),</span>
+            <span class="n">builderName</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">builder_name</span><span class="p">,</span>
+            <span class="n">doctreeDir</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">doctree_dir</span><span class="p">),</span>
+            <span class="n">forceFullBuild</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">force_full_build</span><span class="p">,</span>
+            <span class="n">keepGoing</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">keep_going</span><span class="p">,</span>
+            <span class="n">makeMode</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">make_mode</span><span class="p">,</span>
+            <span class="n">numJobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_jobs</span><span class="p">,</span>
+            <span class="n">quiet</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">quiet</span><span class="p">,</span>
+            <span class="n">silent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">silent</span><span class="p">,</span>
+            <span class="n">srcDir</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">src_dir</span><span class="p">),</span>
+            <span class="n">tags</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tags</span><span class="p">,</span>
+            <span class="n">verbosity</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">verbosity</span><span class="p">,</span>
+            <span class="n">warningIsError</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">warning_is_error</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="SphinxConfig.resolve_build_dir"><a class="viewcode-back" href="../../../../lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.resolve_build_dir">[docs]</a>    <span class="k">def</span> <span class="nf">resolve_build_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_uri</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">actual_conf_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get the build dir to use based on the user&#39;s config.</span>
+
+<span class="sd">        If nothing is specified in the given ``config``, this will choose a location</span>
+<span class="sd">        within the user&#39;s cache dir (as determined by</span>
+<span class="sd">        `appdirs &lt;https://pypi.org/project/appdirs&gt;`). The directory name will be a hash</span>
+<span class="sd">        derived from the given ``conf_dir`` for the project.</span>
+
+<span class="sd">        Alternatively the user (or least language client) can override this by setting</span>
+<span class="sd">        either an absolute path, or a path based on the following &quot;variables&quot;.</span>
+
+<span class="sd">        - ``${workspaceRoot}`` which expands to the workspace root as provided</span>
+<span class="sd">          by the language client.</span>
+
+<span class="sd">        - ``${workspaceFolder}`` alias for ``${workspaceRoot}``, placeholder ready for</span>
+<span class="sd">          multi-root support.</span>
+
+<span class="sd">        - ``${confDir}`` which expands to the configured config dir.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        root_uri</span>
+<span class="sd">           The workspace root uri</span>
+
+<span class="sd">        actual_conf_dir:</span>
+<span class="sd">           The fully resolved conf dir for the project</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">build_dir</span><span class="p">:</span>
+            <span class="c1"># Try to pick a sensible dir based on the project&#39;s location</span>
+            <span class="n">cache</span> <span class="o">=</span> <span class="n">appdirs</span><span class="o">.</span><span class="n">user_cache_dir</span><span class="p">(</span><span class="s2">&quot;esbonio&quot;</span><span class="p">,</span> <span class="s2">&quot;swyddfa&quot;</span><span class="p">)</span>
+            <span class="n">project</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">actual_conf_dir</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+            <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">cache</span><span class="p">)</span> <span class="o">/</span> <span class="n">project</span>
+
+        <span class="n">root_dir</span> <span class="o">=</span> <span class="n">Uri</span><span class="o">.</span><span class="n">to_fs_path</span><span class="p">(</span><span class="n">root_uri</span><span class="p">)</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="n">PATH_VAR_PATTERN</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">build_dir</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">match</span> <span class="ow">and</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;workspaceRoot&quot;</span><span class="p">,</span> <span class="s2">&quot;workspaceFolder&quot;</span><span class="p">}:</span>
+            <span class="n">build</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">build_dir</span><span class="p">)</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="o">*</span><span class="n">build</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">match</span> <span class="ow">and</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;confDir&quot;</span><span class="p">:</span>
+            <span class="n">build</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">build_dir</span><span class="p">)</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">actual_conf_dir</span><span class="p">,</span> <span class="o">*</span><span class="n">build</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+        <span class="c1"># Convert path to/from uri so that any path quirks from windows are</span>
+        <span class="c1"># automatically handled</span>
+        <span class="n">build_uri</span> <span class="o">=</span> <span class="n">Uri</span><span class="o">.</span><span class="n">from_fs_path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">build_dir</span><span class="p">)</span>
+        <span class="n">build_dir</span> <span class="o">=</span> <span class="n">Uri</span><span class="o">.</span><span class="n">to_fs_path</span><span class="p">(</span><span class="n">build_uri</span><span class="p">)</span>
+
+        <span class="c1"># But make sure paths starting with &#39;~&#39; are not corrupted</span>
+        <span class="k">if</span> <span class="n">build_dir</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;/~&quot;</span><span class="p">):</span>
+            <span class="n">build_dir</span> <span class="o">=</span> <span class="n">build_dir</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;/~&quot;</span><span class="p">,</span> <span class="s2">&quot;~&quot;</span><span class="p">)</span>
+
+        <span class="c1"># But make sure (windows) paths starting with &#39;~&#39; are not corrupted</span>
+        <span class="k">if</span> <span class="n">build_dir</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">~&quot;</span><span class="p">):</span>
+            <span class="n">build_dir</span> <span class="o">=</span> <span class="n">build_dir</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">~&quot;</span><span class="p">,</span> <span class="s2">&quot;~&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">build_dir</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="SphinxConfig.resolve_doctree_dir"><a class="viewcode-back" href="../../../../lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.resolve_doctree_dir">[docs]</a>    <span class="k">def</span> <span class="nf">resolve_doctree_dir</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">root_uri</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">actual_conf_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">actual_build_dir</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get the directory to use for doctrees based on the user&#39;s config.</span>
+
+<span class="sd">        If ``doctree_dir`` is not set, this method will follow what ``sphinx-build``</span>
+<span class="sd">        does.</span>
+
+<span class="sd">        - If ``make_mode`` is true, this will be set to ``${buildDir}/doctrees``</span>
+<span class="sd">        - If ``make_mode`` is false, this will be set to ``${buildDir}/.doctrees``</span>
+
+<span class="sd">        Otherwise, if ``doctree_dir`` is set the following &quot;variables&quot; are handled by</span>
+<span class="sd">        this method.</span>
+
+<span class="sd">        - ``${workspaceRoot}`` which expands to the workspace root as provided by the</span>
+<span class="sd">          language client.</span>
+
+<span class="sd">        - ``${workspaceFolder}`` alias for ``${workspaceRoot}``, placeholder ready for</span>
+<span class="sd">          multi-root support.</span>
+
+<span class="sd">        - ``${confDir}`` which expands to the configured config dir.</span>
+
+<span class="sd">        - ``${buildDir}`` which expands to the configured build dir.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        root_uri</span>
+<span class="sd">           The workspace root uri</span>
+
+<span class="sd">        actual_conf_dir</span>
+<span class="sd">           The fully resolved conf dir for the project</span>
+
+<span class="sd">        actual_build_dir</span>
+<span class="sd">           The fully resolved build dir for the project.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">doctree_dir</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_mode</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">actual_build_dir</span><span class="p">,</span> <span class="s2">&quot;doctrees&quot;</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">actual_build_dir</span><span class="p">,</span> <span class="s2">&quot;.doctrees&quot;</span><span class="p">)</span>
+
+        <span class="n">root_dir</span> <span class="o">=</span> <span class="n">Uri</span><span class="o">.</span><span class="n">to_fs_path</span><span class="p">(</span><span class="n">root_uri</span><span class="p">)</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="n">PATH_VAR_PATTERN</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">doctree_dir</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">match</span> <span class="ow">and</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;workspaceRoot&quot;</span><span class="p">,</span> <span class="s2">&quot;workspaceFolder&quot;</span><span class="p">}:</span>
+            <span class="n">build</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">doctree_dir</span><span class="p">)</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="o">*</span><span class="n">build</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">match</span> <span class="ow">and</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;confDir&quot;</span><span class="p">:</span>
+            <span class="n">build</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">doctree_dir</span><span class="p">)</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">actual_conf_dir</span><span class="p">,</span> <span class="o">*</span><span class="n">build</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">match</span> <span class="ow">and</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;buildDir&quot;</span><span class="p">:</span>
+            <span class="n">build</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">doctree_dir</span><span class="p">)</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">actual_build_dir</span><span class="p">,</span> <span class="o">*</span><span class="n">build</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">doctree_dir</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="SphinxConfig.resolve_conf_dir"><a class="viewcode-back" href="../../../../lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.resolve_conf_dir">[docs]</a>    <span class="k">def</span> <span class="nf">resolve_conf_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_uri</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Get the conf dir to use based on the user&#39;s config.</span>
+
+<span class="sd">        If ``conf_dir`` is not set, this method will attempt to find it by searching</span>
+<span class="sd">        within the ``root_uri`` for a ``conf.py`` file. If multiple files are found, the</span>
+<span class="sd">        first one found will be chosen.</span>
+
+<span class="sd">        If ``conf_dir`` is set the following &quot;variables&quot; are handled by this method</span>
+
+<span class="sd">        - ``${workspaceRoot}`` which expands to the workspace root as provided by the</span>
+<span class="sd">          language client.</span>
+
+<span class="sd">        - ``${workspaceFolder}`` alias for ``${workspaceRoot}``, placeholder ready for</span>
+<span class="sd">          multi-root support.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        root_uri</span>
+<span class="sd">            The workspace root uri</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">Uri</span><span class="o">.</span><span class="n">to_fs_path</span><span class="p">(</span><span class="n">root_uri</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">conf_dir</span><span class="p">:</span>
+            <span class="n">ignore_paths</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;.tox&quot;</span><span class="p">,</span> <span class="s2">&quot;site-packages&quot;</span><span class="p">]</span>
+
+            <span class="k">for</span> <span class="n">candidate</span> <span class="ow">in</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">root</span><span class="p">)</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;**/conf.py&quot;</span><span class="p">):</span>
+                <span class="c1"># Skip any files that obviously aren&#39;t part of the project</span>
+                <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">path</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span> <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">ignore_paths</span><span class="p">):</span>
+                    <span class="k">continue</span>
+
+                <span class="k">return</span> <span class="n">candidate</span><span class="o">.</span><span class="n">parent</span>
+
+            <span class="c1"># Nothing found</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">match</span> <span class="o">=</span> <span class="n">PATH_VAR_PATTERN</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conf_dir</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span> <span class="ow">or</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;workspaceRoot&quot;</span><span class="p">,</span> <span class="s2">&quot;workspaceFolder&quot;</span><span class="p">}:</span>
+            <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conf_dir</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span>
+
+        <span class="n">conf</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">conf_dir</span><span class="p">)</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="o">*</span><span class="n">conf</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="SphinxConfig.resolve_src_dir"><a class="viewcode-back" href="../../../../lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.resolve_src_dir">[docs]</a>    <span class="k">def</span> <span class="nf">resolve_src_dir</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_uri</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">actual_conf_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Get the src dir to use based on the user&#39;s config.</span>
+
+<span class="sd">        By default the src dir will be the same as the conf dir, but this can</span>
+<span class="sd">        be overriden by setting the ``src_dir`` field.</span>
+
+<span class="sd">        There are a number of &quot;variables&quot; that can be included in the path,</span>
+<span class="sd">        currently we support</span>
+
+<span class="sd">        - ``${workspaceRoot}`` which expands to the workspace root as provided</span>
+<span class="sd">          by the language client.</span>
+
+<span class="sd">        - ``${workspaceFolder}`` alias for ``${workspaceRoot}``, placeholder ready for</span>
+<span class="sd">          multi-root support.</span>
+
+<span class="sd">        - ``${confDir}`` which expands to the configured config dir.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        root_uri</span>
+<span class="sd">           The workspace root uri</span>
+
+<span class="sd">        actual_conf_dir</span>
+<span class="sd">           The fully resolved conf dir for the project</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">src_dir</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">actual_conf_dir</span><span class="p">)</span>
+
+        <span class="n">src_dir</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">src_dir</span>
+        <span class="n">root_dir</span> <span class="o">=</span> <span class="n">Uri</span><span class="o">.</span><span class="n">to_fs_path</span><span class="p">(</span><span class="n">root_uri</span><span class="p">)</span>
+
+        <span class="n">match</span> <span class="o">=</span> <span class="n">PATH_VAR_PATTERN</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">src_dir</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">match</span> <span class="ow">and</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;workspaceRoot&quot;</span><span class="p">,</span> <span class="s2">&quot;workspaceFolder&quot;</span><span class="p">}:</span>
+            <span class="n">src</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">src_dir</span><span class="p">)</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">root_dir</span><span class="p">,</span> <span class="o">*</span><span class="n">src</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">match</span> <span class="ow">and</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;confDir&quot;</span><span class="p">:</span>
+            <span class="n">src</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">src_dir</span><span class="p">)</span><span class="o">.</span><span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">actual_conf_dir</span><span class="p">,</span> <span class="o">*</span><span class="n">src</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">src_dir</span><span class="p">)</span><span class="o">.</span><span class="n">expanduser</span><span class="p">()</span></div></div>
+
+
+<div class="viewcode-block" id="SphinxServerConfig"><a class="viewcode-back" href="../../../../lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxServerConfig">[docs]</a><span class="k">class</span> <span class="nc">SphinxServerConfig</span><span class="p">(</span><span class="n">ServerConfig</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    .. deprecated:: 0.12.0</span>
+
+<span class="sd">       This will be removed in v1.0.</span>
+<span class="sd">       Use :confval:`sphinx.quiet (boolean)` and :confval:`sphinx.silent (boolean)`</span>
+<span class="sd">       options instead.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">hide_sphinx_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">alias</span><span class="o">=</span><span class="s2">&quot;hideSphinxOutput&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;A flag to indicate if Sphinx build output should be omitted from the log.&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="InitializationOptions"><a class="viewcode-back" href="../../../../lsp/extending/api-reference.html#esbonio.lsp.sphinx.InitializationOptions">[docs]</a><span class="k">class</span> <span class="nc">InitializationOptions</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The initialization options we can expect to receive from a client.&quot;&quot;&quot;</span>
+
+    <span class="n">sphinx</span><span class="p">:</span> <span class="n">SphinxConfig</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">SphinxConfig</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;The ``esbonio.sphinx.*`` namespace of options.&quot;&quot;&quot;</span>
+
+    <span class="n">server</span><span class="p">:</span> <span class="n">SphinxServerConfig</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="n">SphinxServerConfig</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;The ``esbonio.server.*`` namespace of options.&quot;&quot;&quot;</span></div>
+
+
+<span class="n">DIAGNOSTIC_SEVERITY</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">:</span> <span class="n">DiagnosticSeverity</span><span class="o">.</span><span class="n">Error</span><span class="p">,</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">:</span> <span class="n">DiagnosticSeverity</span><span class="o">.</span><span class="n">Information</span><span class="p">,</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">:</span> <span class="n">DiagnosticSeverity</span><span class="o">.</span><span class="n">Warning</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<span class="k">class</span> <span class="nc">SphinxLogHandler</span><span class="p">(</span><span class="n">LspHandler</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A logging handler that can extract errors from Sphinx&#39;s build output.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">app</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">app</span> <span class="o">=</span> <span class="n">app</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">translator</span> <span class="o">=</span> <span class="n">WarningLogRecordTranslator</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">only_once</span> <span class="o">=</span> <span class="n">OnceFilter</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">diagnostics</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Diagnostic</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">get_location</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">location</span><span class="p">:</span>
+            <span class="n">conf</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">confdir</span><span class="p">,</span> <span class="s2">&quot;conf.py&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">Uri</span><span class="o">.</span><span class="n">from_fs_path</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">conf</span><span class="p">)),</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">lineno</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">path</span><span class="p">,</span> <span class="n">parts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_location_path</span><span class="p">(</span><span class="n">location</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">lineno</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;docstring of &quot;</span><span class="p">):</span>
+            <span class="n">target</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;docstring of &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="n">lineno</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_docstring_location</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">Uri</span><span class="o">.</span><span class="n">from_fs_path</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">lineno</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">get_location_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;Determine the filepath from the given location.&quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">location</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;internal padding before &quot;</span><span class="p">):</span>
+            <span class="n">location</span> <span class="o">=</span> <span class="n">location</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;internal padding before &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">location</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;internal padding after &quot;</span><span class="p">):</span>
+            <span class="n">location</span> <span class="o">=</span> <span class="n">location</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;internal padding after &quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+        <span class="n">path</span><span class="p">,</span> <span class="o">*</span><span class="n">parts</span> <span class="o">=</span> <span class="n">location</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+
+        <span class="c1"># On windows the rest of the path will be the first element of parts</span>
+        <span class="k">if</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">location</span><span class="p">)</span><span class="o">.</span><span class="n">drive</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;:</span><span class="si">{</span><span class="n">parts</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="c1"># Diagnostics in .. included:: files are reported relative to the process&#39;</span>
+        <span class="c1"># working directory, so ensure the path is absolute.</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">path</span><span class="p">,</span> <span class="n">parts</span>
+
+    <span class="k">def</span> <span class="nf">get_docstring_location</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">offset</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+
+        <span class="c1"># The containing module will be the longest substring we can find in target</span>
+        <span class="n">candidates</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">target</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="p">]</span>
+        <span class="n">module</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">candidates</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">module</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">obj</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ModuleType</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="n">module</span>
+        <span class="n">dotted_name</span> <span class="o">=</span> <span class="n">target</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">dotted_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">):</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">_</span><span class="p">,</span> <span class="n">line</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getsourcelines</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+            <span class="c1"># Correct off by one error for docstrings that don&#39;t start with a newline.</span>
+            <span class="n">nl</span> <span class="o">=</span> <span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="vm">__doc__</span> <span class="ow">or</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">line</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="ow">not</span> <span class="n">nl</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="s2">&quot;Unable to determine diagnostic location</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">emit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">:</span> <span class="n">logging</span><span class="o">.</span><span class="n">LogRecord</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+        <span class="n">conditions</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;sphinx&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">record</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="n">record</span><span class="o">.</span><span class="n">levelno</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">{</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">,</span> <span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">},</span>
+            <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">translator</span><span class="p">,</span>
+        <span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">conditions</span><span class="p">):</span>
+            <span class="c1"># Log the record as normal</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Only process errors/warnings once.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">only_once</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">record</span><span class="p">):</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Let sphinx do what it does to warning/error messages</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">translator</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+        <span class="n">loc</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">location</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">SphinxLogRecord</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">doc</span><span class="p">,</span> <span class="n">lineno</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_location</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">lineno</span> <span class="ow">or</span> <span class="mi">1</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Reporting diagnostic at </span><span class="si">%s</span><span class="s2">:</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">doc</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Not every message contains a string...</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">msg</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="n">record</span><span class="o">.</span><span class="n">msg</span>
+
+            <span class="c1"># Only attempt to format args if there are args to format</span>
+            <span class="k">if</span> <span class="n">record</span><span class="o">.</span><span class="n">args</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="n">message</span> <span class="o">%</span> <span class="n">record</span><span class="o">.</span><span class="n">args</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">msg</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="s2">&quot;Unable to format diagnostic message: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
+            <span class="p">)</span>
+
+        <span class="n">diagnostic</span> <span class="o">=</span> <span class="n">Diagnostic</span><span class="p">(</span>
+            <span class="nb">range</span><span class="o">=</span><span class="n">Range</span><span class="p">(</span>
+                <span class="n">start</span><span class="o">=</span><span class="n">Position</span><span class="p">(</span><span class="n">line</span><span class="o">=</span><span class="n">line</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">character</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+                <span class="n">end</span><span class="o">=</span><span class="n">Position</span><span class="p">(</span><span class="n">line</span><span class="o">=</span><span class="n">line</span><span class="p">,</span> <span class="n">character</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+            <span class="p">),</span>
+            <span class="n">message</span><span class="o">=</span><span class="n">message</span><span class="p">,</span>
+            <span class="n">severity</span><span class="o">=</span><span class="n">DIAGNOSTIC_SEVERITY</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+                <span class="n">record</span><span class="o">.</span><span class="n">levelno</span><span class="p">,</span> <span class="n">DiagnosticSeverity</span><span class="o">.</span><span class="n">Warning</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">doc</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">diagnostics</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">diagnostics</span><span class="p">[</span><span class="n">doc</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">diagnostic</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">diagnostics</span><span class="p">[</span><span class="n">doc</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">diagnostic</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">emit</span><span class="p">(</span><span class="n">record</span><span class="p">)</span>
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+    <script src="../../../../_static/jquery.js"></script>
+    <script src="../../../../_static/underscore.js"></script>
+    <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../_static/doctools.js"></script>
+    <script src="../../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../../_static/scripts/furo.js"></script>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<p>
+However, you will likely likely want to set some of the language server's configuration
+options which are passed as 
+<code class="docutils literal notranslate">
+<span class="pre">initialization-options</span>
+</code>
+ during startup. They are set
+by subclassing 
+<code class="docutils literal notranslate">
+<span class="pre">eglot-lsp-server</span>
+</code>
+ and implementing the 
+<code class="docutils literal notranslate">
+<span class="pre">eglot-initialization-options</span>
+</code>
+
+method to return them.
+</p>
+
+
+<div class="highlight-elisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nb">defclass</span><span class="w"> </span><span class="nv">eglot-esbonio</span><span class="w"> </span><span class="p">(</span><span class="nv">eglot-lsp-server</span><span class="p">)</span><span class="w"> </span><span class="p">()</span><span class="w"></span>
+<span class="w">  </span><span class="nb">:documentation</span><span class="w"> </span><span class="s">&quot;Esbonio Language Server.&quot;</span><span class="p">)</span><span class="w"></span>
+
+<span class="p">(</span><span class="nv">cl-defmethod</span><span class="w"> </span><span class="nv">eglot-initialization-options</span><span class="w"> </span><span class="p">((</span><span class="nv">server</span><span class="w"> </span><span class="nv">eglot-esbonio</span><span class="p">))</span><span class="w"></span>
+<span class="w">  </span><span class="s">&quot;Passes the initializationOptions required to run the server.&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="o">`</span><span class="p">(</span><span class="nb">:sphinx</span><span class="w"> </span><span class="p">(</span><span class="nb">:confDir</span><span class="w"> </span><span class="s">&quot;${workspaceRoot}&quot;</span><span class="w"></span>
+<span class="w">             </span><span class="nb">:srcDir</span><span class="w"> </span><span class="s">&quot;${confDir}&quot;</span><span class="w"> </span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="nb">:server</span><span class="w"> </span><span class="p">(</span><span class="nb">:logLevel</span><span class="w"> </span><span class="s">&quot;debug&quot;</span><span class="p">)))</span><span class="w"></span>
+</pre></div>
+</div>
+
+<p>
+Then when it comes to adding the entry to 
+<code class="docutils literal notranslate">
+<span class="pre">eglot-server-programs</span>
+</code>
+ the 
+<code class="docutils literal notranslate">
+<span class="pre">eglot-esbonio</span>
+</code>
+
+class needs to be prepended to the list specifying the server start command.
+</p>
+
+
+<div class="highlight-elisp notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">add-to-list</span><span class="w"> </span><span class="ss">&#39;eglot-server-programs</span><span class="w"></span>
+<span class="w">             </span><span class="o">`</span><span class="p">(</span><span class="nv">rst-mode</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="p">(</span><span class="nv">eglot-esbonio</span><span class="w"></span>
+<span class="w">                           </span><span class="o">,</span><span class="p">(</span><span class="nv">executable-find</span><span class="w"> </span><span class="s">&quot;python3&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="w">                           </span><span class="s">&quot;-m&quot;</span><span class="w"> </span><span class="s">&quot;esbonio&quot;</span><span class="p">))))</span><span class="w"></span>
+</pre></div>
+</div>
+
+<p>
+The following is a list of all the available options
+</p>
+

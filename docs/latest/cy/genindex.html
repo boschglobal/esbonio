@@ -1,0 +1,1287 @@
+<!doctype html>
+<html class="no-js" lang="cy">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Indecs" href="#" /><link rel="search" title="Chwilio" href="search.html" />
+
+    <link rel="shortcut icon" href="_static/favicon.svg"/><!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 --><title>Indecs - Esbonio</title>
+<link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     This is the unstable version of the documentation, features may change or be removed without warning. <a href="/esbonio/docs/stable/en/">Click here</a> to view the released version 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Esbonio</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/io.github.swyddfa.Esbonio.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Esbonio</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Chwilio" name="q" aria-label="Chwilio">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Language Server</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lsp/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lsp/advanced-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lsp/extending.html">Extending</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="lsp/extending/directives.html">Directives</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="lsp/extending/directives/directive-registry.html">Supporting Custom Directive Registries</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="lsp/extending/roles.html">Roles</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="lsp/extending/roles/role-registry.html">Supporting Custom Role Registries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lsp/extending/api-reference.html">API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lsp/how-to.html">How To</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="lsp/how-to/get-debug-info.html">How To: Get Debug Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sphinx Extensions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="extensions/relevant_to.html">Relevent To</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="extensions/tutorial.html">Tutorial</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="extensions/tutorial/formatting-example.html">Formatting Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensions/tutorial/hello-world.html">Shwmae i gyd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensions/tutorial/solution-example.html">Solution Example</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing/devenvs.html">Development Environments</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          
+<section class="genindex-section">
+  <h1 id="index">Indecs</h1>
+  <div class="genindex-jumpbox"><a href="#A"><strong>A</strong></a> | <a href="#B"><strong>B</strong></a> | <a href="#C"><strong>C</strong></a> | <a href="#D"><strong>D</strong></a> | <a href="#E"><strong>E</strong></a> | <a href="#F"><strong>F</strong></a> | <a href="#G"><strong>G</strong></a> | <a href="#H"><strong>H</strong></a> | <a href="#I"><strong>I</strong></a> | <a href="#K"><strong>K</strong></a> | <a href="#L"><strong>L</strong></a> | <a href="#M"><strong>M</strong></a> | <a href="#N"><strong>N</strong></a> | <a href="#O"><strong>O</strong></a> | <a href="#P"><strong>P</strong></a> | <a href="#Q"><strong>Q</strong></a> | <a href="#R"><strong>R</strong></a> | <a href="#S"><strong>S</strong></a> | <a href="#T"><strong>T</strong></a> | <a href="#U"><strong>U</strong></a> | <a href="#V"><strong>V</strong></a> | <a href="#W"><strong>W</strong></a></div>
+</section>
+<section id="A" class="genindex-section">
+  <h2>A</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.Directives.add_argument_completion_provider">add_argument_completion_provider() (esbonio.lsp.directives.Directives method)</a>
+</li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.Directives.add_argument_definition_provider">add_argument_definition_provider() (esbonio.lsp.directives.Directives method)</a>
+</li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.Directives.add_argument_link_provider">add_argument_link_provider() (esbonio.lsp.directives.Directives method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.add_diagnostics">add_diagnostics() (esbonio.lsp.rst.RstLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.Directives.add_documentation">add_documentation() (esbonio.lsp.directives.Directives method)</a>
+
+        <ul>
+          <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.Roles.add_documentation">(esbonio.lsp.roles.Roles method)</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.Directives.add_feature">add_feature() (esbonio.lsp.directives.Directives method)</a>
+
+        <ul>
+          <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.Roles.add_feature">(esbonio.lsp.roles.Roles method)</a>
+</li>
+          <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.add_feature">(esbonio.lsp.rst.RstLanguageServer method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.Roles.add_target_completion_provider">add_target_completion_provider() (esbonio.lsp.roles.Roles method)</a>
+</li>
+        <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.Roles.add_target_definition_provider">add_target_definition_provider() (esbonio.lsp.roles.Roles method)</a>
+</li>
+        <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.Roles.add_target_link_provider">add_target_link_provider() (esbonio.lsp.roles.Roles method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.app">app (esbonio.lsp.sphinx.SphinxLanguageServer attribute)</a>
+</li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.ArgumentCompletion">ArgumentCompletion (class in esbonio.lsp.directives)</a>
+</li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.ArgumentDefinition">ArgumentDefinition (class in esbonio.lsp.directives)</a>
+</li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.ArgumentLink">ArgumentLink (class in esbonio.lsp.directives)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="B" class="genindex-section">
+  <h2>B</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.build">build() (esbonio.lsp.sphinx.SphinxLanguageServer method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.build_dir">build_dir (esbonio.lsp.sphinx.SphinxConfig attribute)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.builder_name">builder_name (esbonio.lsp.sphinx.SphinxConfig attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="C" class="genindex-section">
+  <h2>C</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.cb_build_finished">cb_build_finished() (esbonio.lsp.sphinx.SphinxLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.cb_env_before_read_docs">cb_env_before_read_docs() (esbonio.lsp.sphinx.SphinxLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.cb_source_read">cb_source_read() (esbonio.lsp.sphinx.SphinxLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.clear_diagnostics">clear_diagnostics() (esbonio.lsp.rst.RstLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.LanguageFeature.code_action">code_action() (esbonio.lsp.LanguageFeature method)</a>
+</li>
+        <li>
+    command
+
+        <ul>
+          <li><a href="lsp/advanced-usage.html#command-esbonio.server.build">esbonio.server.build</a>
+</li>
+          <li><a href="lsp/advanced-usage.html#command-esbonio.server.configuration">esbonio.server.configuration</a>
+</li>
+          <li><a href="lsp/advanced-usage.html#command-esbonio.server.preview">esbonio.server.preview</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.CompletionContext.commit_characters_support">commit_characters_support (esbonio.lsp.CompletionContext property)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.LanguageFeature.complete">complete() (esbonio.lsp.LanguageFeature method)</a>
+</li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.ArgumentCompletion.complete_arguments">complete_arguments() (esbonio.lsp.directives.ArgumentCompletion method)</a>
+
+        <ul>
+          <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.DirectiveLanguageFeature.complete_arguments">(esbonio.lsp.directives.DirectiveLanguageFeature method)</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.RoleLanguageFeature.complete_targets">complete_targets() (esbonio.lsp.roles.RoleLanguageFeature method)</a>
+
+        <ul>
+          <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.TargetCompletion.complete_targets">(esbonio.lsp.roles.TargetCompletion method)</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.testing.completion_request">completion_request() (in module esbonio.lsp.testing)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.LanguageFeature.completion_resolve">completion_resolve() (esbonio.lsp.LanguageFeature method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.LanguageFeature.completion_triggers">completion_triggers (esbonio.lsp.LanguageFeature attribute)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.CompletionContext">CompletionContext (class in esbonio.lsp)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.conf_dir">conf_dir (esbonio.lsp.sphinx.SphinxConfig attribute)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.config_overrides">config_overrides (esbonio.lsp.sphinx.SphinxConfig attribute)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.configuration">configuration (esbonio.lsp.rst.RstLanguageServer property)</a>
+
+        <ul>
+          <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.configuration">(esbonio.lsp.sphinx.SphinxLanguageServer property)</a>
+</li>
+        </ul></li>
+        <li>
+    configuration value
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.enabled-boolean">esbonio.server.enabled (boolean)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.enabledInPyFiles-boolean">esbonio.server.enabledInPyFiles (boolean)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.excludedModules-string">esbonio.server.excludedModules (string[])</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.includedModules-string">esbonio.server.includedModules (string[])</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.installBehavior-string">esbonio.server.installBehavior (string)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.pythonPath-string">esbonio.server.pythonPath (string)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.showDeprecationWarnings-boolean">esbonio.server.showDeprecationWarnings (boolean)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.updateBehavior-string">esbonio.server.updateBehavior (string)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.updateFrequency-string">esbonio.server.updateFrequency (string)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-server.enableLivePreview-boolean">server.enableLivePreview (boolean)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-server.enableScrollSync-boolean">server.enableScrollSync (boolean)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-server.hideSphinxOutput-boolean">server.hideSphinxOutput (boolean)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-server.logFilter-string">server.logFilter (string[])</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-server.logLevel-string">server.logLevel (string)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-server.showDeprecationWarnings-boolean">server.showDeprecationWarnings (boolean)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-sphinx.buildDir-string">sphinx.buildDir (string)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-sphinx.builderName-string">sphinx.builderName (string)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-sphinx.confDir-string">sphinx.confDir (string)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-sphinx.configOverrides-object">sphinx.configOverrides (object)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-sphinx.doctreeDir-string">sphinx.doctreeDir (string)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-sphinx.forceFullBuild-boolean">sphinx.forceFullBuild (boolean)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-sphinx.keepGoing-boolean">sphinx.keepGoing (boolean)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-sphinx.makeMode-boolean">sphinx.makeMode (boolean)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-sphinx.numJobs-string-or-integer">sphinx.numJobs (string or integer)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-sphinx.quiet-boolean">sphinx.quiet (boolean)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-sphinx.silent-boolean">sphinx.silent (boolean)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-sphinx.srcDir-string">sphinx.srcDir (string)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-sphinx.tags-string">sphinx.tags (string[])</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-sphinx.verbosity-integer">sphinx.verbosity (integer)</a>
+</li>
+          <li><a href="lsp/getting-started.html#confval-sphinx.warningIsError-boolean">sphinx.warningIsError (boolean)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.create_language_server">create_language_server() (in module esbonio.lsp)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.create_sphinx_app">create_sphinx_app() (esbonio.lsp.sphinx.SphinxLanguageServer method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="D" class="genindex-section">
+  <h2>D</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/roles.html#esbonio.lsp.util.patterns.DEFAULT_ROLE">DEFAULT_ROLE (in module esbonio.lsp.util.patterns)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.LanguageFeature.definition">definition() (esbonio.lsp.LanguageFeature method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.LanguageFeature.definition_triggers">definition_triggers (esbonio.lsp.LanguageFeature attribute)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.DefinitionContext">DefinitionContext (class in esbonio.lsp)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.LanguageFeature.delete_files">delete_files() (esbonio.lsp.LanguageFeature method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.CompletionContext.deprecated_support">deprecated_support (esbonio.lsp.CompletionContext property)</a>
+</li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.util.patterns.DIRECTIVE">DIRECTIVE (in module esbonio.lsp.util.patterns)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.testing.directive_argument_patterns">directive_argument_patterns() (in module esbonio.lsp.testing)</a>
+</li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.util.patterns.DIRECTIVE_OPTION">DIRECTIVE_OPTION (in module esbonio.lsp.util.patterns)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.DirectiveLanguageFeature">DirectiveLanguageFeature (class in esbonio.lsp.directives)</a>
+</li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.Directives">Directives (class in esbonio.lsp.directives)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.CompletionContext.doc">doc (esbonio.lsp.CompletionContext attribute)</a>
+
+        <ul>
+          <li><a href="lsp/extending/api-reference.html#esbonio.lsp.DefinitionContext.doc">(esbonio.lsp.DefinitionContext attribute)</a>
+</li>
+          <li><a href="lsp/extending/api-reference.html#esbonio.lsp.DocumentLinkContext.doc">(esbonio.lsp.DocumentLinkContext attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.doctree_dir">doctree_dir (esbonio.lsp.sphinx.SphinxConfig attribute)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.LanguageFeature.document_link">document_link() (esbonio.lsp.LanguageFeature method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.CompletionContext.documentation_formats">documentation_formats (esbonio.lsp.CompletionContext property)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.DocumentLinkContext">DocumentLinkContext (class in esbonio.lsp)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="E" class="genindex-section">
+  <h2>E</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.ServerConfig.enable_live_preview">enable_live_preview (esbonio.lsp.rst.ServerConfig attribute)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.ServerConfig.enable_scroll_sync">enable_scroll_sync (esbonio.lsp.rst.ServerConfig attribute)</a>
+</li>
+        <li><a href="lsp/extending.html#term-Engine"><strong>Engine</strong></a>
+</li>
+        <li>
+    esbonio
+
+        <ul>
+          <li><a href="lsp/advanced-usage.html#startmod-esbonio">startup module</a>
+</li>
+        </ul></li>
+        <li>
+    esbonio.lsp.rst
+
+        <ul>
+          <li><a href="lsp/advanced-usage.html#startmod-esbonio.lsp.rst">startup module</a>
+</li>
+        </ul></li>
+        <li>
+    esbonio.lsp.rst._record
+
+        <ul>
+          <li><a href="lsp/how-to/get-debug-info.html#startmod-esbonio.lsp.rst._record">startup module</a>
+</li>
+        </ul></li>
+        <li>
+    esbonio.lsp.spelling
+
+        <ul>
+          <li><a href="lsp/advanced-usage.html#extmod-esbonio.lsp.spelling">startup module</a>
+</li>
+        </ul></li>
+        <li>
+    esbonio.lsp.sphinx
+
+        <ul>
+          <li><a href="lsp/advanced-usage.html#startmod-esbonio.lsp.sphinx">startup module</a>
+</li>
+        </ul></li>
+        <li>
+    esbonio.lsp.sphinx._record
+
+        <ul>
+          <li><a href="lsp/how-to/get-debug-info.html#startmod-esbonio.lsp.sphinx._record">startup module</a>
+</li>
+        </ul></li>
+        <li>
+    esbonio.lsp.testing
+
+        <ul>
+          <li><a href="lsp/extending/api-reference.html#module-esbonio.lsp.testing">modiwl</a>
+</li>
+        </ul></li>
+        <li>
+    esbonio.server.build
+
+        <ul>
+          <li><a href="lsp/advanced-usage.html#command-esbonio.server.build">command</a>
+</li>
+        </ul></li>
+        <li>
+    esbonio.server.configuration
+
+        <ul>
+          <li><a href="lsp/advanced-usage.html#command-esbonio.server.configuration">command</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    esbonio.server.enabled (boolean)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.enabled-boolean">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    esbonio.server.enabledInPyFiles (boolean)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.enabledInPyFiles-boolean">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    esbonio.server.excludedModules (string[])
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.excludedModules-string">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    esbonio.server.includedModules (string[])
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.includedModules-string">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    esbonio.server.installBehavior (string)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.installBehavior-string">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    esbonio.server.preview
+
+        <ul>
+          <li><a href="lsp/advanced-usage.html#command-esbonio.server.preview">command</a>
+</li>
+        </ul></li>
+        <li>
+    esbonio.server.pythonPath (string)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.pythonPath-string">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    esbonio.server.showDeprecationWarnings (boolean)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.showDeprecationWarnings-boolean">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    esbonio.server.updateBehavior (string)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.updateBehavior-string">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    esbonio.server.updateFrequency (string)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-esbonio.server.updateFrequency-string">configuration value</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending.html#term-Extension-Module"><strong>Extension Module</strong></a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="F" class="genindex-section">
+  <h2>F</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.file_list_pending_build_version_updates">file_list_pending_build_version_updates (esbonio.lsp.sphinx.SphinxLanguageServer attribute)</a>
+</li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.DirectiveLanguageFeature.find_argument_definitions">find_argument_definitions() (esbonio.lsp.directives.DirectiveLanguageFeature method)</a>
+</li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.ArgumentDefinition.find_definitions">find_definitions() (esbonio.lsp.directives.ArgumentDefinition method)</a>
+
+        <ul>
+          <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.TargetDefinition.find_definitions">(esbonio.lsp.roles.TargetDefinition method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.RoleLanguageFeature.find_target_definitions">find_target_definitions() (esbonio.lsp.roles.RoleLanguageFeature method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.force_full_build">force_full_build (esbonio.lsp.sphinx.SphinxConfig attribute)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.from_arguments">from_arguments() (esbonio.lsp.sphinx.SphinxConfig class method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="G" class="genindex-section">
+  <h2>G</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.get_default_role">get_default_role() (esbonio.lsp.rst.RstLanguageServer method)</a>
+
+        <ul>
+          <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.get_default_role">(esbonio.lsp.sphinx.SphinxLanguageServer method)</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.get_directive_options">get_directive_options() (esbonio.lsp.rst.RstLanguageServer method)</a>
+
+        <ul>
+          <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.get_directive_options">(esbonio.lsp.sphinx.SphinxLanguageServer method)</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.Directives.get_directives">get_directives() (esbonio.lsp.directives.Directives method)</a>
+
+        <ul>
+          <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.get_directives">(esbonio.lsp.rst.RstLanguageServer method)</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.get_doctree">get_doctree() (esbonio.lsp.sphinx.SphinxLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.Directives.get_documentation">get_documentation() (esbonio.lsp.directives.Directives method)</a>
+
+        <ul>
+          <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.Roles.get_documentation">(esbonio.lsp.roles.Roles method)</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.get_domain">get_domain() (esbonio.lsp.sphinx.SphinxLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.get_domains">get_domains() (esbonio.lsp.sphinx.SphinxLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.get_feature">get_feature() (esbonio.lsp.rst.RstLanguageServer method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.DirectiveLanguageFeature.get_implementation">get_implementation() (esbonio.lsp.directives.DirectiveLanguageFeature method)</a>
+
+        <ul>
+          <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.Directives.get_implementation">(esbonio.lsp.directives.Directives method)</a>
+</li>
+          <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.RoleLanguageFeature.get_implementation">(esbonio.lsp.roles.RoleLanguageFeature method)</a>
+</li>
+          <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.Roles.get_implementation">(esbonio.lsp.roles.Roles method)</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.get_initial_doctree">get_initial_doctree() (esbonio.lsp.rst.RstLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.get_intersphinx_projects">get_intersphinx_projects() (esbonio.lsp.sphinx.SphinxLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.get_intersphinx_targets">get_intersphinx_targets() (esbonio.lsp.sphinx.SphinxLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.get_location_type">get_location_type() (esbonio.lsp.rst.RstLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.get_role_target_types">get_role_target_types() (esbonio.lsp.sphinx.SphinxLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.get_role_targets">get_role_targets() (esbonio.lsp.sphinx.SphinxLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.Roles.get_roles">get_roles() (esbonio.lsp.roles.Roles method)</a>
+
+        <ul>
+          <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.get_roles">(esbonio.lsp.rst.RstLanguageServer method)</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="H" class="genindex-section">
+  <h2>H</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.has_intersphinx_targets">has_intersphinx_targets() (esbonio.lsp.sphinx.SphinxLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxServerConfig.hide_sphinx_output">hide_sphinx_output (esbonio.lsp.sphinx.SphinxServerConfig attribute)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.LanguageFeature.hover">hover() (esbonio.lsp.LanguageFeature method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.testing.hover_request">hover_request() (in module esbonio.lsp.testing)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="I" class="genindex-section">
+  <h2>I</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.LanguageFeature.implementation">implementation() (esbonio.lsp.LanguageFeature method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.LanguageFeature.implementation_triggers">implementation_triggers (esbonio.lsp.LanguageFeature attribute)</a>
+</li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.DirectiveLanguageFeature.index_directives">index_directives() (esbonio.lsp.directives.DirectiveLanguageFeature method)</a>
+</li>
+        <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.RoleLanguageFeature.index_roles">index_roles() (esbonio.lsp.roles.RoleLanguageFeature method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.InitializationOptions">InitializationOptions (class in esbonio.lsp.rst)</a>
+
+        <ul>
+          <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.InitializationOptions">(class in esbonio.lsp.sphinx)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.LanguageFeature.initialize">initialize() (esbonio.lsp.LanguageFeature method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.LanguageFeature.initialized">initialized() (esbonio.lsp.LanguageFeature method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.CompletionContext.insert_replace_support">insert_replace_support (esbonio.lsp.CompletionContext property)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.testing.intersphinx_target_patterns">intersphinx_target_patterns() (in module esbonio.lsp.testing)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="K" class="genindex-section">
+  <h2>K</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.keep_going">keep_going (esbonio.lsp.sphinx.SphinxConfig attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="L" class="genindex-section">
+  <h2>L</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending.html#term-Language-Feature"><strong>Language Feature</strong></a>
+</li>
+        <li><a href="lsp/extending.html#term-Language-Server"><strong>Language Server</strong></a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.LanguageFeature">LanguageFeature (class in esbonio.lsp)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.line_at_position">line_at_position() (esbonio.lsp.rst.RstLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.line_to_position">line_to_position() (esbonio.lsp.rst.RstLanguageServer method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.load_extension">load_extension() (esbonio.lsp.rst.RstLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.CompletionContext.location">location (esbonio.lsp.CompletionContext attribute)</a>
+
+        <ul>
+          <li><a href="lsp/extending/api-reference.html#esbonio.lsp.DefinitionContext.location">(esbonio.lsp.DefinitionContext attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.ServerConfig.log_filter">log_filter (esbonio.lsp.rst.ServerConfig attribute)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.ServerConfig.log_level">log_level (esbonio.lsp.rst.ServerConfig attribute)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.logger">logger (esbonio.lsp.rst.RstLanguageServer attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="M" class="genindex-section">
+  <h2>M</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.testing.make_esbonio_client">make_esbonio_client() (in module esbonio.lsp.testing)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.make_mode">make_mode (esbonio.lsp.sphinx.SphinxConfig attribute)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.CompletionContext.match">match (esbonio.lsp.CompletionContext attribute)</a>
+
+        <ul>
+          <li><a href="lsp/extending/api-reference.html#esbonio.lsp.DefinitionContext.match">(esbonio.lsp.DefinitionContext attribute)</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.MissingConfigError">MissingConfigError (class in esbonio.lsp.sphinx)</a>
+</li>
+        <li>
+    modiwl
+
+        <ul>
+          <li><a href="lsp/extending/api-reference.html#module-esbonio.lsp.testing">esbonio.lsp.testing</a>
+</li>
+        </ul></li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="N" class="genindex-section">
+  <h2>N</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.num_jobs">num_jobs (esbonio.lsp.sphinx.SphinxConfig attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="O" class="genindex-section">
+  <h2>O</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.LanguageFeature.on_shutdown">on_shutdown() (esbonio.lsp.LanguageFeature method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="P" class="genindex-section">
+  <h2>P</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.parallel">parallel (esbonio.lsp.sphinx.SphinxConfig property)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.CompletionContext.position">position (esbonio.lsp.CompletionContext attribute)</a>
+
+        <ul>
+          <li><a href="lsp/extending/api-reference.html#esbonio.lsp.DefinitionContext.position">(esbonio.lsp.DefinitionContext attribute)</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.CompletionContext.preselect_support">preselect_support (esbonio.lsp.CompletionContext property)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.preview">preview() (esbonio.lsp.rst.RstLanguageServer method)</a>
+
+        <ul>
+          <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.preview">(esbonio.lsp.sphinx.SphinxLanguageServer method)</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.preview_port">preview_port (esbonio.lsp.sphinx.SphinxLanguageServer attribute)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.preview_process">preview_process (esbonio.lsp.sphinx.SphinxLanguageServer attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="Q" class="genindex-section">
+  <h2>Q</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.quiet">quiet (esbonio.lsp.sphinx.SphinxConfig attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="R" class="genindex-section">
+  <h2>R</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="extensions/relevant_to.html#directive-relevent-to">relevent-to (directive)</a>
+</li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.DirectiveLanguageFeature.resolve_argument_link">resolve_argument_link() (esbonio.lsp.directives.DirectiveLanguageFeature method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.resolve_build_dir">resolve_build_dir() (esbonio.lsp.sphinx.SphinxConfig method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.resolve_conf_dir">resolve_conf_dir() (esbonio.lsp.sphinx.SphinxConfig method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.resolve_doctree_dir">resolve_doctree_dir() (esbonio.lsp.sphinx.SphinxConfig method)</a>
+</li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.ArgumentLink.resolve_link">resolve_link() (esbonio.lsp.directives.ArgumentLink method)</a>
+
+        <ul>
+          <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.TargetLink.resolve_link">(esbonio.lsp.roles.TargetLink method)</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.resolve_src_dir">resolve_src_dir() (esbonio.lsp.sphinx.SphinxConfig method)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.RoleLanguageFeature.resolve_target_link">resolve_target_link() (esbonio.lsp.roles.RoleLanguageFeature method)</a>
+
+        <ul>
+          <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.Roles.resolve_target_link">(esbonio.lsp.roles.Roles method)</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/roles.html#esbonio.lsp.util.patterns.ROLE">ROLE (in module esbonio.lsp.util.patterns)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.testing.role_patterns">role_patterns() (in module esbonio.lsp.testing)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.testing.role_target_patterns">role_target_patterns() (in module esbonio.lsp.testing)</a>
+</li>
+        <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.RoleLanguageFeature">RoleLanguageFeature (class in esbonio.lsp.roles)</a>
+</li>
+        <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.Roles">Roles (class in esbonio.lsp.roles)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer">RstLanguageServer (class in esbonio.lsp.rst)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="S" class="genindex-section">
+  <h2>S</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.LanguageFeature.save">save() (esbonio.lsp.LanguageFeature method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.InitializationOptions.server">server (esbonio.lsp.rst.InitializationOptions attribute)</a>
+
+        <ul>
+          <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.InitializationOptions.server">(esbonio.lsp.sphinx.InitializationOptions attribute)</a>
+</li>
+        </ul></li>
+        <li>
+    server.enableLivePreview (boolean)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-server.enableLivePreview-boolean">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    server.enableScrollSync (boolean)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-server.enableScrollSync-boolean">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    server.hideSphinxOutput (boolean)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-server.hideSphinxOutput-boolean">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    server.logFilter (string[])
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-server.logFilter-string">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    server.logLevel (string)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-server.logLevel-string">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    server.showDeprecationWarnings (boolean)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-server.showDeprecationWarnings-boolean">configuration value</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.ServerConfig">ServerConfig (class in esbonio.lsp.rst)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.set_diagnostics">set_diagnostics() (esbonio.lsp.rst.RstLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.ServerConfig.show_deprecation_warnings">show_deprecation_warnings (esbonio.lsp.rst.ServerConfig attribute)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.silent">silent (esbonio.lsp.sphinx.SphinxConfig attribute)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.CompletionContext.snippet_support">snippet_support (esbonio.lsp.CompletionContext property)</a>
+</li>
+        <li><a href="extensions/tutorial.html#directive-solution">solution (directive)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.InitializationOptions.sphinx">sphinx (esbonio.lsp.sphinx.InitializationOptions attribute)</a>
+</li>
+        <li>
+    sphinx.buildDir (string)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-sphinx.buildDir-string">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    sphinx.builderName (string)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-sphinx.builderName-string">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    sphinx.confDir (string)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-sphinx.confDir-string">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    sphinx.configOverrides (object)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-sphinx.configOverrides-object">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    sphinx.doctreeDir (string)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-sphinx.doctreeDir-string">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    sphinx.forceFullBuild (boolean)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-sphinx.forceFullBuild-boolean">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    sphinx.keepGoing (boolean)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-sphinx.keepGoing-boolean">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    sphinx.makeMode (boolean)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-sphinx.makeMode-boolean">configuration value</a>
+</li>
+        </ul></li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li>
+    sphinx.numJobs (string or integer)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-sphinx.numJobs-string-or-integer">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    sphinx.quiet (boolean)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-sphinx.quiet-boolean">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    sphinx.silent (boolean)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-sphinx.silent-boolean">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    sphinx.srcDir (string)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-sphinx.srcDir-string">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    sphinx.tags (string[])
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-sphinx.tags-string">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    sphinx.verbosity (integer)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-sphinx.verbosity-integer">configuration value</a>
+</li>
+        </ul></li>
+        <li>
+    sphinx.warningIsError (boolean)
+
+        <ul>
+          <li><a href="lsp/getting-started.html#confval-sphinx.warningIsError-boolean">configuration value</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.sphinx_args">sphinx_args (esbonio.lsp.sphinx.SphinxLanguageServer attribute)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer.sphinx_log">sphinx_log (esbonio.lsp.sphinx.SphinxLanguageServer attribute)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.testing.sphinx_version">sphinx_version() (in module esbonio.lsp.testing)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig">SphinxConfig (class in esbonio.lsp.sphinx)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxLanguageServer">SphinxLanguageServer (class in esbonio.lsp.sphinx)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxServerConfig">SphinxServerConfig (class in esbonio.lsp.sphinx)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.src_dir">src_dir (esbonio.lsp.sphinx.SphinxConfig attribute)</a>
+</li>
+        <li><a href="lsp/extending.html#term-Startup-Module"><strong>Startup Module</strong></a>
+</li>
+        <li>
+    startup module
+
+        <ul>
+          <li><a href="lsp/advanced-usage.html#startmod-esbonio">esbonio</a>
+</li>
+          <li><a href="lsp/advanced-usage.html#startmod-esbonio.lsp.rst">esbonio.lsp.rst</a>
+</li>
+          <li><a href="lsp/how-to/get-debug-info.html#startmod-esbonio.lsp.rst._record">esbonio.lsp.rst._record</a>
+</li>
+          <li><a href="lsp/advanced-usage.html#extmod-esbonio.lsp.spelling">esbonio.lsp.spelling</a>
+</li>
+          <li><a href="lsp/advanced-usage.html#startmod-esbonio.lsp.sphinx">esbonio.lsp.sphinx</a>
+</li>
+          <li><a href="lsp/how-to/get-debug-info.html#startmod-esbonio.lsp.sphinx._record">esbonio.lsp.sphinx._record</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.DirectiveLanguageFeature.suggest_directives">suggest_directives() (esbonio.lsp.directives.DirectiveLanguageFeature method)</a>
+
+        <ul>
+          <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.Directives.suggest_directives">(esbonio.lsp.directives.Directives method)</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.DirectiveLanguageFeature.suggest_options">suggest_options() (esbonio.lsp.directives.DirectiveLanguageFeature method)</a>
+
+        <ul>
+          <li><a href="lsp/extending/directives.html#esbonio.lsp.directives.Directives.suggest_options">(esbonio.lsp.directives.Directives method)</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.RoleLanguageFeature.suggest_roles">suggest_roles() (esbonio.lsp.roles.RoleLanguageFeature method)</a>
+
+        <ul>
+          <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.Roles.suggest_roles">(esbonio.lsp.roles.Roles method)</a>
+</li>
+        </ul></li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.CompletionContext.supported_tags">supported_tags (esbonio.lsp.CompletionContext property)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.sync_diagnostics">sync_diagnostics() (esbonio.lsp.rst.RstLanguageServer method)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="T" class="genindex-section">
+  <h2>T</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.tags">tags (esbonio.lsp.sphinx.SphinxConfig attribute)</a>
+</li>
+        <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.TargetCompletion">TargetCompletion (class in esbonio.lsp.roles)</a>
+</li>
+        <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.TargetDefinition">TargetDefinition (class in esbonio.lsp.roles)</a>
+</li>
+        <li><a href="lsp/extending/roles.html#esbonio.lsp.roles.TargetLink">TargetLink (class in esbonio.lsp.roles)</a>
+</li>
+    </ul></td>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.text_to_position">text_to_position() (esbonio.lsp.rst.RstLanguageServer method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.to_application_args">to_application_args() (esbonio.lsp.sphinx.SphinxConfig method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.to_cli_args">to_cli_args() (esbonio.lsp.sphinx.SphinxConfig method)</a>
+</li>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.DocumentLinkContext.tooltip_support">tooltip_support (esbonio.lsp.DocumentLinkContext property)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="U" class="genindex-section">
+  <h2>U</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.rst.RstLanguageServer.user_config">user_config (esbonio.lsp.rst.RstLanguageServer attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="V" class="genindex-section">
+  <h2>V</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.verbosity">verbosity (esbonio.lsp.sphinx.SphinxConfig attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+<section id="W" class="genindex-section">
+  <h2>W</h2>
+  <table style="width: 100%" class="indextable genindextable"><tr>
+    <td style="width: 33%; vertical-align: top;"><ul>
+        <li><a href="lsp/extending/api-reference.html#esbonio.lsp.sphinx.SphinxConfig.warning_is_error">warning_is_error (esbonio.lsp.sphinx.SphinxConfig attribute)</a>
+</li>
+    </ul></td>
+  </tr></table>
+</section>
+
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    <script src="_static/translations.js"></script>
+    </body>
+</html>

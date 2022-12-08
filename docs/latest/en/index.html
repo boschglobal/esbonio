@@ -1,0 +1,565 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Getting Started" href="lsp/getting-started.html" />
+
+    <link rel="shortcut icon" href="_static/favicon.svg"/><!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
+        <title>Esbonio</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     This is the unstable version of the documentation, features may change or be removed without warning. <a href="/esbonio/docs/stable/en/">Click here</a> to view the released version 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="#"><div class="brand">Esbonio</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="#">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/io.github.swyddfa.Esbonio.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Esbonio</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Language Server</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lsp/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lsp/advanced-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lsp/extending.html">Extending</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="lsp/extending/directives.html">Directives</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="lsp/extending/directives/directive-registry.html">Supporting Custom Directive Registries</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="lsp/extending/roles.html">Roles</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="lsp/extending/roles/role-registry.html">Supporting Custom Role Registries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lsp/extending/api-reference.html">API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lsp/how-to.html">How To</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="lsp/how-to/get-debug-info.html">How To: Get Debug Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sphinx Extensions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="extensions/relevant_to.html">Relevent To</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="extensions/tutorial.html">Tutorial</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="extensions/tutorial/formatting-example.html">Formatting Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensions/tutorial/hello-world.html">Hello World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="extensions/tutorial/solution-example.html">Solution Example</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing/devenvs.html">Development Environments</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="edit-this-page">
+  <a class="muted-link" href="https://github.com/swyddfa/esbonio/edit/develop/docs/index.rst" title="Edit this page">
+    <svg aria-hidden="true" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4" />
+      <line x1="13.5" y1="6.5" x2="17.5" y2="10.5" />
+    </svg>
+    <span class="visually-hidden">Edit this page</span>
+  </a>
+</div><div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="esbonio">
+<h1>Esbonio<a class="headerlink" href="#esbonio" title="Permalink to this heading">#</a></h1>
+<p class="rubric">esbonio – (v.) to explain</p>
+<p>Esbonio aims to make it easier to work with <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> tools such as
+<a class="reference external" href="https://www.sphinx-doc.org/en/master/">Sphinx</a> by providing a <a class="reference external" href="https://langserver.org/">Language Server</a> to enhance your editing experience.</p>
+<section id="language-server">
+<h2>Language Server<a class="headerlink" href="#language-server" title="Permalink to this heading">#</a></h2>
+<p>Here is a quick summary of the features implemented by the language server.</p>
+<style>
+
+  input#completion:not(:checked) ~ div[data-content="completion"] {
+    display: none;
+  }
+
+  input#completion:not(:checked) ~ div[data-label="completion"] {
+    border-left: solid 5px #white;
+  }
+
+  input#completion:checked ~ div[data-label="completion"] {
+    border-left: solid 5px #81d3ee;
+  }
+
+  input#definition:not(:checked) ~ div[data-content="definition"] {
+    display: none;
+  }
+
+  input#definition:not(:checked) ~ div[data-label="definition"] {
+    border-left: solid 5px #white;
+  }
+
+  input#definition:checked ~ div[data-label="definition"] {
+    border-left: solid 5px #81d3ee;
+  }
+
+  input#diagnostics:not(:checked) ~ div[data-content="diagnostics"] {
+    display: none;
+  }
+
+  input#diagnostics:not(:checked) ~ div[data-label="diagnostics"] {
+    border-left: solid 5px #white;
+  }
+
+  input#diagnostics:checked ~ div[data-label="diagnostics"] {
+    border-left: solid 5px #81d3ee;
+  }
+
+  input#document-links:not(:checked) ~ div[data-content="document-links"] {
+    display: none;
+  }
+
+  input#document-links:not(:checked) ~ div[data-label="document-links"] {
+    border-left: solid 5px #white;
+  }
+
+  input#document-links:checked ~ div[data-label="document-links"] {
+    border-left: solid 5px #81d3ee;
+  }
+
+  input#document-symbols:not(:checked) ~ div[data-content="document-symbols"] {
+    display: none;
+  }
+
+  input#document-symbols:not(:checked) ~ div[data-label="document-symbols"] {
+    border-left: solid 5px #white;
+  }
+
+  input#document-symbols:checked ~ div[data-label="document-symbols"] {
+    border-left: solid 5px #81d3ee;
+  }
+
+  input#hover:not(:checked) ~ div[data-content="hover"] {
+    display: none;
+  }
+
+  input#hover:not(:checked) ~ div[data-label="hover"] {
+    border-left: solid 5px #white;
+  }
+
+  input#hover:checked ~ div[data-label="hover"] {
+    border-left: solid 5px #81d3ee;
+  }
+
+  input#implementation:not(:checked) ~ div[data-content="implementation"] {
+    display: none;
+  }
+
+  input#implementation:not(:checked) ~ div[data-label="implementation"] {
+    border-left: solid 5px #white;
+  }
+
+  input#implementation:checked ~ div[data-label="implementation"] {
+    border-left: solid 5px #81d3ee;
+  }
+</style>
+
+<div class="full-width" style="display: flex">
+  <div id="09f626f7-81ac-41fa-9a08-3e5dd747ab5b" style="flex-shrink: 0; border-right: solid 1px #ccc; margin-right: 10px">
+    
+<div data-label="completion" style="margin-right: 5px; border-left: solid 2px white ">
+  <label for="completion" style="margin-bottom:0; margin-left: 5px">
+    Completion
+  </label>
+</div>
+
+<div data-label="definition" style="margin-right: 5px; border-left: solid 2px white ">
+  <label for="definition" style="margin-bottom:0; margin-left: 5px">
+    Definition
+  </label>
+</div>
+
+<div data-label="diagnostics" style="margin-right: 5px; border-left: solid 2px white ">
+  <label for="diagnostics" style="margin-bottom:0; margin-left: 5px">
+    Diagnostics
+  </label>
+</div>
+
+<div data-label="document-links" style="margin-right: 5px; border-left: solid 2px white ">
+  <label for="document-links" style="margin-bottom:0; margin-left: 5px">
+    Document Links
+  </label>
+</div>
+
+<div data-label="document-symbols" style="margin-right: 5px; border-left: solid 2px white ">
+  <label for="document-symbols" style="margin-bottom:0; margin-left: 5px">
+    Document Symbols
+  </label>
+</div>
+
+<div data-label="hover" style="margin-right: 5px; border-left: solid 2px white ">
+  <label for="hover" style="margin-bottom:0; margin-left: 5px">
+    Hover
+  </label>
+</div>
+
+<div data-label="implementation" style="margin-right: 5px; border-left: solid 2px white ">
+  <label for="implementation" style="margin-bottom:0; margin-left: 5px">
+    Implementation
+  </label>
+</div>
+
+  </div>
+  <div>
+
+<input type="radio" checked name="features" style="display: none" id="completion" />
+<div data-content="completion">
+<p>The language server implements <a class="reference external" href="https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_completion">textDocument/completion</a> and can
+offer suggestions in a variety of contexts.</p>
+<figure class="align-center">
+<a class="reference external image-reference" href="/_images/completion-demo.gif"><img alt="_images/completion-demo.gif" src="_images/completion-demo.gif" /></a>
+</figure>
+</div>
+<input type="radio"  name="features" style="display: none" id="definition" />
+<div data-content="definition">
+<p>The language server implements <a class="reference external" href="https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_definition">textDocument/definition</a> to provide the
+location of items referenced by certain roles. Currently only the <code class="docutils literal notranslate"><span class="pre">:ref:</span></code>
+and <code class="docutils literal notranslate"><span class="pre">:doc:</span></code> roles are supported.</p>
+<figure class="align-center">
+<a class="reference external image-reference" href="/_images/definition-demo.gif"><img alt="_images/definition-demo.gif" src="_images/definition-demo.gif" /></a>
+</figure>
+</div>
+<input type="radio"  name="features" style="display: none" id="diagnostics" />
+<div data-content="diagnostics">
+<p>The language server implements <a class="reference external" href="https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_publishDiagnostics">textDocument/publishDiagnostics</a> to
+report errors/warnings enountered during a build.</p>
+<figure class="align-center">
+<a class="reference external image-reference" href="/_images/diagnostic-sphinx-errors-demo.png"><img alt="_images/diagnostic-sphinx-errors-demo.png" src="_images/diagnostic-sphinx-errors-demo.png" /></a>
+</figure>
+</div>
+<input type="radio"  name="features" style="display: none" id="document-links" />
+<div data-content="document-links">
+<p>The language server implements <a class="reference external" href="https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_documentLink">textDocument/documentLink</a> to make references to other files “Ctrl + Clickable”</p>
+<figure class="align-center">
+<a class="reference external image-reference" href="/_images/document-links-demo.png"><img alt="_images/document-links-demo.png" src="_images/document-links-demo.png" /></a>
+</figure>
+</div>
+<input type="radio"  name="features" style="display: none" id="document-symbols" />
+<div data-content="document-symbols">
+<p>The language server implements <a class="reference external" href="https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_documentSymbol">textDocument/documentSymbol</a> which
+powers features like the “Outline” view in VSCode.</p>
+<figure class="align-center">
+<a class="reference external image-reference" href="/_images/document-symbols-demo.png"><img alt="_images/document-symbols-demo.png" src="_images/document-symbols-demo.png" /></a>
+</figure>
+</div>
+<input type="radio"  name="features" style="display: none" id="hover" />
+<div data-content="hover">
+<p>The language server implements <a class="reference external" href="https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_hover">textDocument/hover</a> to provide easy access to documentation for roles and directives.</p>
+<figure class="align-center">
+<a class="reference external image-reference" href="/_images/hover-demo.png"><img alt="_images/hover-demo.png" src="_images/hover-demo.png" /></a>
+</figure>
+</div>
+<input type="radio"  name="features" style="display: none" id="implementation" />
+<div data-content="implementation">
+<p>The language server implements <a class="reference external" href="https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_implementation">textDocument/implementation</a> so you can easily find the implementation of a given role or directive.</p>
+<figure class="align-center">
+<a class="reference external image-reference" href="/_images/implementation-demo.gif"><img alt="_images/implementation-demo.gif" src="_images/implementation-demo.gif" /></a>
+</figure>
+</div>
+  </div>
+</div>
+<script>
+
+  function selectItem(container, target) {
+    let targetId = ''
+
+    if (target.nodeName === 'LABEL') {
+      targetId = target.getAttribute('for')
+    } else {
+      targetId = target.getAttribute('data-label')
+    }
+
+    Array.from(container.children).forEach(item => {
+      let id = item.getAttribute('data-label')
+
+      if (targetId === id) {
+        item.style.color = 'var(--color-brand-content)'
+        item.style.borderColor = 'var(--color-brand-content)'
+      } else {
+        item.style.color = 'var(--color-content-foreground)'
+        item.style.borderColor = 'var(--color-content-background)'
+      }
+    })
+  }
+
+  const container = document.getElementById('09f626f7-81ac-41fa-9a08-3e5dd747ab5b')
+  selectItem(container, container.children[0])
+  container.addEventListener('click', (event) => {
+    selectItem(container, event.target)
+  })
+</script>
+<ul class="simple">
+<li><p>See the <a class="reference internal" href="lsp/getting-started.html#lsp-getting-started"><span class="std std-ref">Getting Started</span></a> guide for details on how to get up and
+running.</p></li>
+<li><p>For further details on more advanced use cases, see the <a class="reference internal" href="lsp/advanced-usage.html#lsp-advanced"><span class="std std-ref">Advanced Usage</span></a> section.</p></li>
+<li><p>Interested in adding support for your own Sphinx extensions?
+See the section on <a class="reference internal" href="lsp/extending.html#lsp-extending"><span class="std std-ref">Extending</span></a> for more information.</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="sphinx-extensions">
+<h2>Sphinx Extensions<a class="headerlink" href="#sphinx-extensions" title="Permalink to this heading">#</a></h2>
+<p>In addition to the language server, the Esbonio project provides a number of
+Sphinx extensions.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="extensions/relevant_to.html"><span class="doc">Relevent To</span></a>: Swap out sections of an article based on a chosen subject.</p></li>
+<li><p><a class="reference internal" href="extensions/tutorial.html"><span class="doc">Tutorial</span></a>: Export tutorial articles as <a class="reference external" href="https://jupyter.org/">Jupyter Notebooks</a></p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="lsp/getting-started.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Getting Started</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Esbonio</a><ul>
+<li><a class="reference internal" href="#language-server">Language Server</a></li>
+<li><a class="reference internal" href="#sphinx-extensions">Sphinx Extensions</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    </body>
+</html>

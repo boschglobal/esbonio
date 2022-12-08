@@ -1,0 +1,398 @@
+<p>
+Configuration is handled using VSCode’s settings system.
+The following options are available.
+</p>
+
+
+<dl class="std confval">
+
+<dt class="sig sig-object std" id="confval-esbonio.server.enabled-boolean">
+
+<span class="sig-name descname">
+<span class="pre">esbonio.server.enabled</span>
+ 
+<span class="pre">(boolean)</span>
+</span>
+<a class="headerlink" href="#confval-esbonio.server.enabled-boolean" title="Permalink to this definition">#</a>
+</dt>
+
+<dd>
+<p>
+A flag that can be used to completely disable the language server, if required.
+</p>
+
+
+</dd>
+</dl>
+
+
+<dl class="std confval">
+
+<dt class="sig sig-object std" id="confval-esbonio.server.enabledInPyFiles-boolean">
+
+<span class="sig-name descname">
+<span class="pre">esbonio.server.enabledInPyFiles</span>
+ 
+<span class="pre">(boolean)</span>
+</span>
+<a class="headerlink" href="#confval-esbonio.server.enabledInPyFiles-boolean" title="Permalink to this definition">#</a>
+</dt>
+
+<dd>
+<p>
+A flag that controls if the language server is enabled in Python files.
+</p>
+
+
+</dd>
+</dl>
+
+
+<dl class="std confval">
+
+<dt class="sig sig-object std" id="confval-esbonio.server.excludedModules-string">
+
+<span class="sig-name descname">
+<span class="pre">esbonio.server.excludedModules</span>
+ 
+<span class="pre">(string[])</span>
+</span>
+<a class="headerlink" href="#confval-esbonio.server.excludedModules-string" title="Permalink to this definition">#</a>
+</dt>
+
+<dd>
+<p>
+A list of 
+<a class="reference internal" href="advanced-usage.html#lsp-extension-modules">
+<span class="std std-ref">
+Extension Modules
+</span>
+</a>
+ to exclude from the server.
+</p>
+
+
+</dd>
+</dl>
+
+
+<dl class="std confval">
+
+<dt class="sig sig-object std" id="confval-esbonio.server.includedModules-string">
+
+<span class="sig-name descname">
+<span class="pre">esbonio.server.includedModules</span>
+ 
+<span class="pre">(string[])</span>
+</span>
+<a class="headerlink" href="#confval-esbonio.server.includedModules-string" title="Permalink to this definition">#</a>
+</dt>
+
+<dd>
+<p>
+A list of additional 
+<a class="reference internal" href="advanced-usage.html#lsp-extension-modules">
+<span class="std std-ref">
+Extension Modules
+</span>
+</a>
+ to include in the server.
+</p>
+
+
+</dd>
+</dl>
+
+
+<dl class="std confval">
+
+<dt class="sig sig-object std" id="confval-esbonio.server.installBehavior-string">
+
+<span class="sig-name descname">
+<span class="pre">esbonio.server.installBehavior</span>
+ 
+<span class="pre">(string)</span>
+</span>
+<a class="headerlink" href="#confval-esbonio.server.installBehavior-string" title="Permalink to this definition">#</a>
+</dt>
+
+<dd>
+<p>
+The VSCode extension can manage the installation of the language server for you.
+If the language server is missing from your current environment the extension will prompt
+by default to check if you want it to perform the installation. If you don’t like this
+behavior you can use this option to change it, the following values are valid
+</p>
+
+
+<ul class="simple">
+
+<li>
+<p>
+<code class="docutils literal notranslate">
+<span class="pre">nothing</span>
+</code>
+ - Don’t attempt to install the language server if it’s missing
+</p>
+</li>
+
+<li>
+<p>
+<code class="docutils literal notranslate">
+<span class="pre">prompt</span>
+</code>
+ (default) - Ask for confirmation before installing the server
+</p>
+</li>
+
+<li>
+<p>
+<code class="docutils literal notranslate">
+<span class="pre">automatic</span>
+</code>
+ - Never ask for confirmation, the language server will be installed
+automatically in new environments
+</p>
+</li>
+
+</ul>
+
+</dd>
+</dl>
+
+
+<dl class="std confval">
+
+<dt class="sig sig-object std" id="confval-esbonio.server.showDeprecationWarnings-boolean">
+
+<span class="sig-name descname">
+<span class="pre">esbonio.server.showDeprecationWarnings</span>
+ 
+<span class="pre">(boolean)</span>
+</span>
+<a class="headerlink" href="#confval-esbonio.server.showDeprecationWarnings-boolean" title="Permalink to this definition">#</a>
+</dt>
+
+<dd>
+<p>
+Flag to enable deprecation warnings, useful for developers.
+</p>
+
+
+</dd>
+</dl>
+
+
+<dl class="std confval">
+
+<dt class="sig sig-object std" id="confval-esbonio.server.pythonPath-string">
+
+<span class="sig-name descname">
+<span class="pre">esbonio.server.pythonPath</span>
+ 
+<span class="pre">(string)</span>
+</span>
+<a class="headerlink" href="#confval-esbonio.server.pythonPath-string" title="Permalink to this definition">#</a>
+</dt>
+
+<dd>
+<p>
+If the official 
+<a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">
+Python Extension
+</a>
+ is available the extension will use the same
+Python environment as you have configured for your workspace. However, if you wish
+to use a different environment or do not have the Python extension installed this
+option can be set to tell the extension which environment to use.
+</p>
+
+
+<p>
+Currently accepted values include:
+</p>
+
+
+<ul class="simple">
+
+<li>
+<p>
+<code class="docutils literal notranslate">
+<span class="pre">/path/to/python/</span>
+</code>
+ - An absolute path
+</p>
+</li>
+
+<li>
+<p>
+<code class="docutils literal notranslate">
+<span class="pre">${workspaceRoot}/../venv/bin/python</span>
+</code>
+ - A path relative to the root of your workspace
+</p>
+</li>
+
+<li>
+<p>
+<code class="docutils literal notranslate">
+<span class="pre">${workspaceFolder}/../venv/bin/python</span>
+</code>
+ -  Same as 
+<code class="docutils literal notranslate">
+<span class="pre">${workspaceRoot}</span>
+</code>
+, placeholder for true multi-root workspace support.
+</p>
+</li>
+
+</ul>
+
+</dd>
+</dl>
+
+
+<dl class="std confval">
+
+<dt class="sig sig-object std" id="confval-esbonio.server.updateFrequency-string">
+
+<span class="sig-name descname">
+<span class="pre">esbonio.server.updateFrequency</span>
+ 
+<span class="pre">(string)</span>
+</span>
+<a class="headerlink" href="#confval-esbonio.server.updateFrequency-string" title="Permalink to this definition">#</a>
+</dt>
+
+<dd>
+<p>
+The VSCode extension can also automatically install updates to the language server
+as they are released. By default the extension will check on start up once a week,
+alternatively you can set this setting to one of the following values
+</p>
+
+
+<ul class="simple">
+
+<li>
+<p>
+<code class="docutils literal notranslate">
+<span class="pre">never</span>
+</code>
+ - Never check for updates. Though you can still trigger an update
+manually if you wish.
+</p>
+</li>
+
+<li>
+<p>
+<code class="docutils literal notranslate">
+<span class="pre">monthly</span>
+</code>
+ - Check for updates once a month
+</p>
+</li>
+
+<li>
+<p>
+<code class="docutils literal notranslate">
+<span class="pre">weekly</span>
+</code>
+ - Check for updates once a week
+</p>
+</li>
+
+<li>
+<p>
+<code class="docutils literal notranslate">
+<span class="pre">daily</span>
+</code>
+ - Check for updates once a day
+</p>
+</li>
+
+</ul>
+
+</dd>
+</dl>
+
+
+<dl class="std confval">
+
+<dt class="sig sig-object std" id="confval-esbonio.server.updateBehavior-string">
+
+<span class="sig-name descname">
+<span class="pre">esbonio.server.updateBehavior</span>
+ 
+<span class="pre">(string)</span>
+</span>
+<a class="headerlink" href="#confval-esbonio.server.updateBehavior-string" title="Permalink to this definition">#</a>
+</dt>
+
+<dd>
+<p>
+If an update is detected through one of the extension’s automated checks this option
+controls what the extension does next. By default the extension will automatically
+install it 
+<strong>
+unless
+</strong>
+ it is a major update (e.g 
+<code class="docutils literal notranslate">
+<span class="pre">1.x.y</span>
+</code>
+ -&gt; 
+<code class="docutils literal notranslate">
+<span class="pre">2.0.0</span>
+</code>
+). The following
+options are available
+</p>
+
+
+<ul class="simple">
+
+<li>
+<p>
+<code class="docutils literal notranslate">
+<span class="pre">promptAlways</span>
+</code>
+ - Always ask for confirmation before applying updates
+</p>
+</li>
+
+<li>
+<p>
+<code class="docutils literal notranslate">
+<span class="pre">promptMajor</span>
+</code>
+ - Only ask for confirmation on major updates, minor versions will be
+installed automatically
+</p>
+</li>
+
+<li>
+<p>
+<code class="docutils literal notranslate">
+<span class="pre">automatic</span>
+</code>
+ - Never ask for confirmation, updates will always be installed.
+</p>
+</li>
+
+</ul>
+
+</dd>
+</dl>
+
+
+<p>
+The VSCode extension also exposes the following server configuration options under an
+
+<code class="docutils literal notranslate">
+<span class="pre">esbonio.*</span>
+</code>
+ prefix.
+</p>
+
+

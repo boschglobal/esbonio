@@ -1,0 +1,731 @@
+<!doctype html>
+<html class="no-js" lang="cy">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><link rel="index" title="Indecs" href="../../genindex.html" /><link rel="search" title="Chwilio" href="../../search.html" />
+
+    <link rel="shortcut icon" href="../../_static/favicon.svg"/><!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
+        <title>esbonio.lsp - Esbonio</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../../_static/autodoc_pydantic.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<div class="announcement">
+  <aside class="announcement-content">
+     This is the unstable version of the documentation, features may change or be removed without warning. <a href="/esbonio/docs/stable/en/">Click here</a> to view the released version 
+  </aside>
+</div>
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Esbonio</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../../_static/io.github.swyddfa.Esbonio.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">Esbonio</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Chwilio" name="q" aria-label="Chwilio">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Language Server</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../lsp/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lsp/advanced-usage.html">Advanced Usage</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lsp/extending.html">Extending</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../lsp/extending/directives.html">Directives</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../lsp/extending/directives/directive-registry.html">Supporting Custom Directive Registries</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../lsp/extending/roles.html">Roles</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../lsp/extending/roles/role-registry.html">Supporting Custom Role Registries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../lsp/extending/api-reference.html">API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../lsp/how-to.html">How To</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../lsp/how-to/get-debug-info.html">How To: Get Debug Information</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html">Changelog</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Sphinx Extensions</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../extensions/relevant_to.html">Relevent To</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../extensions/tutorial.html">Tutorial</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../extensions/tutorial/formatting-example.html">Formatting Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../extensions/tutorial/hello-world.html">Shwmae i gyd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../extensions/tutorial/solution-example.html">Solution Example</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contributing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing/devenvs.html">Development Environments</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <h1>Cod ffynhonnell ar gyfer esbonio.lsp</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">enum</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">textwrap</span>
+<span class="kn">import</span> <span class="nn">traceback</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Type</span>
+
+<span class="kn">from</span> <span class="nn">pygls.lsp.methods</span> <span class="kn">import</span> <span class="n">CODE_ACTION</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.methods</span> <span class="kn">import</span> <span class="n">COMPLETION</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.methods</span> <span class="kn">import</span> <span class="n">COMPLETION_ITEM_RESOLVE</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.methods</span> <span class="kn">import</span> <span class="n">DEFINITION</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.methods</span> <span class="kn">import</span> <span class="n">DOCUMENT_LINK</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.methods</span> <span class="kn">import</span> <span class="n">DOCUMENT_SYMBOL</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.methods</span> <span class="kn">import</span> <span class="n">HOVER</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.methods</span> <span class="kn">import</span> <span class="n">IMPLEMENTATION</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.methods</span> <span class="kn">import</span> <span class="n">INITIALIZE</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.methods</span> <span class="kn">import</span> <span class="n">INITIALIZED</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.methods</span> <span class="kn">import</span> <span class="n">SHUTDOWN</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.methods</span> <span class="kn">import</span> <span class="n">TEXT_DOCUMENT_DID_CHANGE</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.methods</span> <span class="kn">import</span> <span class="n">TEXT_DOCUMENT_DID_OPEN</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.methods</span> <span class="kn">import</span> <span class="n">TEXT_DOCUMENT_DID_SAVE</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.methods</span> <span class="kn">import</span> <span class="n">WORKSPACE_DID_DELETE_FILES</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">CodeActionParams</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">CompletionItem</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">CompletionList</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">CompletionOptions</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">CompletionParams</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">DefinitionParams</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">DeleteFilesParams</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">DidChangeTextDocumentParams</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">DidOpenTextDocumentParams</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">DidSaveTextDocumentParams</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">DocumentLinkParams</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">DocumentSymbolParams</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">FileOperationFilter</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">FileOperationPattern</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">FileOperationRegistrationOptions</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">Hover</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">HoverParams</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">ImplementationParams</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">InitializedParams</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">InitializeParams</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">MarkupContent</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">MarkupKind</span>
+<span class="kn">from</span> <span class="nn">pygls.lsp.types</span> <span class="kn">import</span> <span class="n">ServerCapabilities</span>
+<span class="kn">from</span> <span class="nn">pygls.protocol</span> <span class="kn">import</span> <span class="n">LanguageServerProtocol</span>
+
+<span class="kn">from</span> <span class="nn">.rst</span> <span class="kn">import</span> <span class="n">CompletionContext</span>
+<span class="kn">from</span> <span class="nn">.rst</span> <span class="kn">import</span> <span class="n">DefinitionContext</span>
+<span class="kn">from</span> <span class="nn">.rst</span> <span class="kn">import</span> <span class="n">DocumentLinkContext</span>
+<span class="kn">from</span> <span class="nn">.rst</span> <span class="kn">import</span> <span class="n">HoverContext</span>
+<span class="kn">from</span> <span class="nn">.rst</span> <span class="kn">import</span> <span class="n">ImplementationContext</span>
+<span class="kn">from</span> <span class="nn">.rst</span> <span class="kn">import</span> <span class="n">LanguageFeature</span>
+<span class="kn">from</span> <span class="nn">.rst</span> <span class="kn">import</span> <span class="n">RstLanguageServer</span>
+<span class="kn">from</span> <span class="nn">.symbols</span> <span class="kn">import</span> <span class="n">SymbolVisitor</span>
+
+<span class="n">__version__</span> <span class="o">=</span> <span class="s2">&quot;0.15.0&quot;</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;CompletionContext&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;DefinitionContext&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;DocumentLinkContext&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;HoverContext&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ImplementationContext&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;LanguageFeature&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;RstLanguageServer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;create_language_server&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="c1"># Commands</span>
+<span class="n">ESBONIO_SERVER_CONFIGURATION</span> <span class="o">=</span> <span class="s2">&quot;esbonio.server.configuration&quot;</span>
+<span class="n">ESBONIO_SERVER_PREVIEW</span> <span class="o">=</span> <span class="s2">&quot;esbonio.server.preview&quot;</span>
+<span class="n">ESBONIO_SERVER_BUILD</span> <span class="o">=</span> <span class="s2">&quot;esbonio.server.build&quot;</span>
+
+
+<span class="k">class</span> <span class="nc">Patched</span><span class="p">(</span><span class="n">LanguageServerProtocol</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Tweaked version of the protocol allowing us to tweak how the `ServerCapabilities`</span>
+<span class="sd">    are constructed.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_server_capabilities</span> <span class="o">=</span> <span class="n">ServerCapabilities</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">server_capabilities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_server_capabilities</span>
+
+    <span class="nd">@server_capabilities</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">server_capabilities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">ServerCapabilities</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">WORKSPACE_DID_DELETE_FILES</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fm</span><span class="o">.</span><span class="n">features</span><span class="p">:</span>
+            <span class="n">opts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fm</span><span class="o">.</span><span class="n">feature_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">WORKSPACE_DID_DELETE_FILES</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">opts</span><span class="p">:</span>
+                <span class="n">value</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">file_operations</span><span class="o">.</span><span class="n">did_delete</span> <span class="o">=</span> <span class="n">opts</span>  <span class="c1"># type: ignore</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_server_capabilities</span> <span class="o">=</span> <span class="n">value</span>
+
+
+<div class="viewcode-block" id="create_language_server"><a class="viewcode-back" href="../../lsp/extending/api-reference.html#esbonio.lsp.create_language_server">[docs]</a><span class="k">def</span> <span class="nf">create_language_server</span><span class="p">(</span>
+    <span class="n">server_cls</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">RstLanguageServer</span><span class="p">],</span> <span class="n">modules</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RstLanguageServer</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Create a new language server instance.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    server_cls:</span>
+<span class="sd">       The class definition to create the server from.</span>
+<span class="sd">    modules:</span>
+<span class="sd">       The list of modules that should be loaded.</span>
+<span class="sd">    args, kwargs:</span>
+<span class="sd">       Any additional arguments that should be passed to the language server&#39;s</span>
+<span class="sd">       constructor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="s2">&quot;logger&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s2">&quot;logger&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">logger</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">server</span> <span class="o">=</span> <span class="n">server_cls</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">protocol_cls</span><span class="o">=</span><span class="n">Patched</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="c1"># Work around older version of pygls on Python 3.6</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;version&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="n">server</span> <span class="o">=</span> <span class="n">server_cls</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">protocol_cls</span><span class="o">=</span><span class="n">Patched</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">modules</span><span class="p">:</span>
+        <span class="n">_load_module</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">module</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">_configure_lsp_methods</span><span class="p">(</span><span class="n">server</span><span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">_configure_lsp_methods</span><span class="p">(</span><span class="n">server</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">RstLanguageServer</span><span class="p">:</span>
+    <span class="nd">@server</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="n">INITIALIZE</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_initialize</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">InitializeParams</span><span class="p">):</span>
+        <span class="n">ls</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">ls</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">feature</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="nd">@server</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="n">INITIALIZED</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_initialized</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">InitializedParams</span><span class="p">):</span>
+        <span class="n">ls</span><span class="o">.</span><span class="n">initialized</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">ls</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">feature</span><span class="o">.</span><span class="n">initialized</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="nd">@server</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="n">SHUTDOWN</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_shutdown</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">ls</span><span class="o">.</span><span class="n">on_shutdown</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">ls</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">feature</span><span class="o">.</span><span class="n">on_shutdown</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="nd">@server</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="n">TEXT_DOCUMENT_DID_OPEN</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_open</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">DidOpenTextDocumentParams</span><span class="p">):</span>
+
+        <span class="c1"># TODO: Delete me when we&#39;ve dropped Python 3.6 and a pygls release that</span>
+        <span class="c1"># remembers the language id is available.</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">get_document</span><span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">text_document</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span>
+        <span class="n">doc</span><span class="o">.</span><span class="n">language_id</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">text_document</span><span class="o">.</span><span class="n">language_id</span>  <span class="c1"># type: ignore</span>
+
+    <span class="nd">@server</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="n">TEXT_DOCUMENT_DID_CHANGE</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_change</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">DidChangeTextDocumentParams</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+    <span class="nd">@server</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">ESBONIO_SERVER_BUILD</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">else</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+        <span class="n">force_all</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;force_all&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">filenames</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;filenames&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">ls</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">force_all</span><span class="p">,</span> <span class="n">filenames</span><span class="p">)</span>
+
+    <span class="nd">@server</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="n">TEXT_DOCUMENT_DID_SAVE</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_save</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">DidSaveTextDocumentParams</span><span class="p">):</span>
+
+        <span class="n">ls</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">ls</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">feature</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="nd">@server</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span>
+        <span class="n">WORKSPACE_DID_DELETE_FILES</span><span class="p">,</span>
+        <span class="n">FileOperationRegistrationOptions</span><span class="p">(</span>
+            <span class="n">filters</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">FileOperationFilter</span><span class="p">(</span>
+                    <span class="n">pattern</span><span class="o">=</span><span class="n">FileOperationPattern</span><span class="p">(</span><span class="n">glob</span><span class="o">=</span><span class="s2">&quot;**/*.rst&quot;</span><span class="p">),</span>
+                <span class="p">)</span>
+            <span class="p">]</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_delete_files</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">DeleteFilesParams</span><span class="p">):</span>
+        <span class="n">ls</span><span class="o">.</span><span class="n">delete_files</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">ls</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">feature</span><span class="o">.</span><span class="n">delete_files</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+    <span class="nd">@server</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="n">CODE_ACTION</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_code_action</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">CodeActionParams</span><span class="p">):</span>
+        <span class="n">actions</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">ls</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">actions</span> <span class="o">+=</span> <span class="n">feature</span><span class="o">.</span><span class="n">code_action</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">actions</span>
+
+    <span class="nd">@server</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="n">HOVER</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_hover</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">HoverParams</span><span class="p">):</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">text_document</span><span class="o">.</span><span class="n">uri</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">get_document</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">position</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">line_at_position</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">get_location_type</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+        <span class="n">hover_values</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">ls</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">feature</span><span class="o">.</span><span class="n">hover_triggers</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">pattern</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+                        <span class="k">continue</span>
+
+                    <span class="c1"># only trigger hover if the position of the request is within</span>
+                    <span class="c1"># the match</span>
+                    <span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">pos</span><span class="o">.</span><span class="n">character</span> <span class="o">&lt;=</span> <span class="n">stop</span><span class="p">:</span>
+                        <span class="n">context</span> <span class="o">=</span> <span class="n">HoverContext</span><span class="p">(</span>
+                            <span class="n">doc</span><span class="o">=</span><span class="n">doc</span><span class="p">,</span>
+                            <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">,</span>
+                            <span class="n">match</span><span class="o">=</span><span class="n">match</span><span class="p">,</span>
+                            <span class="n">position</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+                            <span class="n">capabilities</span><span class="o">=</span><span class="n">ls</span><span class="o">.</span><span class="n">client_capabilities</span><span class="p">,</span>
+                        <span class="p">)</span>
+                        <span class="n">ls</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Hover context: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+                        <span class="n">hover_value</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">hover</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+                        <span class="n">hover_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hover_value</span><span class="p">)</span>
+
+        <span class="n">hover_content_values</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">hover_values</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">Hover</span><span class="p">(</span>
+            <span class="n">contents</span><span class="o">=</span><span class="n">MarkupContent</span><span class="p">(</span>
+                <span class="n">kind</span><span class="o">=</span><span class="n">MarkupKind</span><span class="o">.</span><span class="n">Markdown</span><span class="p">,</span>
+                <span class="n">value</span><span class="o">=</span><span class="n">hover_content_values</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="c1"># &lt;engine-example&gt;</span>
+    <span class="nd">@server</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span>
+        <span class="n">COMPLETION</span><span class="p">,</span>
+        <span class="n">CompletionOptions</span><span class="p">(</span>
+            <span class="n">trigger_characters</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;&gt;&quot;</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="s2">&quot;`&quot;</span><span class="p">,</span> <span class="s2">&quot;&lt;&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">],</span> <span class="n">resolve_provider</span><span class="o">=</span><span class="kc">True</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_completion</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">CompletionParams</span><span class="p">):</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">text_document</span><span class="o">.</span><span class="n">uri</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">position</span>
+
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">get_document</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">line_at_position</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">get_location_type</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+        <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">ls</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">feature</span><span class="o">.</span><span class="n">completion_triggers</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">pattern</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+                        <span class="k">continue</span>
+
+                    <span class="c1"># Only trigger completions if the position of the request is within</span>
+                    <span class="c1"># the match.</span>
+                    <span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">pos</span><span class="o">.</span><span class="n">character</span> <span class="o">&lt;=</span> <span class="n">stop</span><span class="p">:</span>
+                        <span class="n">context</span> <span class="o">=</span> <span class="n">CompletionContext</span><span class="p">(</span>
+                            <span class="n">doc</span><span class="o">=</span><span class="n">doc</span><span class="p">,</span>
+                            <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">,</span>
+                            <span class="n">match</span><span class="o">=</span><span class="n">match</span><span class="p">,</span>
+                            <span class="n">position</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+                            <span class="n">capabilities</span><span class="o">=</span><span class="n">ls</span><span class="o">.</span><span class="n">client_capabilities</span><span class="p">,</span>
+                        <span class="p">)</span>
+                        <span class="n">ls</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Completion context: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+
+                        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">feature</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span><span class="n">context</span><span class="p">):</span>
+                            <span class="n">item</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;source_feature&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">data</span> <span class="ow">or</span> <span class="p">{})}</span>
+                            <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">CompletionList</span><span class="p">(</span><span class="n">is_incomplete</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="n">items</span><span class="p">)</span>
+
+    <span class="c1"># &lt;/engine-example&gt;</span>
+
+    <span class="nd">@server</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="n">COMPLETION_ITEM_RESOLVE</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_completion_resolve</span><span class="p">(</span>
+        <span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="n">item</span><span class="p">:</span> <span class="n">CompletionItem</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CompletionItem</span><span class="p">:</span>
+        <span class="n">source</span> <span class="o">=</span> <span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">data</span> <span class="ow">or</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;source_feature&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">feature</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">get_feature</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">feature</span><span class="p">:</span>
+            <span class="n">ls</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                <span class="s2">&quot;Unable to resolve completion item, unknown source: &#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span><span class="p">,</span> <span class="n">source</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">item</span>
+
+        <span class="k">return</span> <span class="n">feature</span><span class="o">.</span><span class="n">completion_resolve</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+
+    <span class="nd">@server</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="n">DEFINITION</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_definition</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">DefinitionParams</span><span class="p">):</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">text_document</span><span class="o">.</span><span class="n">uri</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">position</span>
+
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">get_document</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">line_at_position</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">get_location_type</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+        <span class="n">definitions</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">ls</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">feature</span><span class="o">.</span><span class="n">definition_triggers</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">pattern</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+                        <span class="k">continue</span>
+
+                    <span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">pos</span><span class="o">.</span><span class="n">character</span> <span class="ow">and</span> <span class="n">pos</span><span class="o">.</span><span class="n">character</span> <span class="o">&lt;=</span> <span class="n">stop</span><span class="p">:</span>
+                        <span class="n">context</span> <span class="o">=</span> <span class="n">DefinitionContext</span><span class="p">(</span>
+                            <span class="n">doc</span><span class="o">=</span><span class="n">doc</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="n">match</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">pos</span>
+                        <span class="p">)</span>
+                        <span class="n">definitions</span> <span class="o">+=</span> <span class="n">feature</span><span class="o">.</span><span class="n">definition</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">definitions</span>
+
+    <span class="nd">@server</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="n">IMPLEMENTATION</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_implementation</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">ImplementationParams</span><span class="p">):</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">text_document</span><span class="o">.</span><span class="n">uri</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">position</span>
+
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">get_document</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">line_at_position</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">get_location_type</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+        <span class="n">implementations</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">ls</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">feature</span><span class="o">.</span><span class="n">implementation_triggers</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">match</span> <span class="ow">in</span> <span class="n">pattern</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+                        <span class="k">continue</span>
+
+                    <span class="n">start</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">span</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">start</span> <span class="o">&lt;=</span> <span class="n">pos</span><span class="o">.</span><span class="n">character</span> <span class="ow">and</span> <span class="n">pos</span><span class="o">.</span><span class="n">character</span> <span class="o">&lt;=</span> <span class="n">stop</span><span class="p">:</span>
+                        <span class="n">context</span> <span class="o">=</span> <span class="n">ImplementationContext</span><span class="p">(</span>
+                            <span class="n">doc</span><span class="o">=</span><span class="n">doc</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="n">location</span><span class="p">,</span> <span class="n">match</span><span class="o">=</span><span class="n">match</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">pos</span>
+                        <span class="p">)</span>
+                        <span class="n">ls</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Implementation context: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+                        <span class="n">implementations</span> <span class="o">+=</span> <span class="n">feature</span><span class="o">.</span><span class="n">implementation</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">implementations</span>
+
+    <span class="nd">@server</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="n">DOCUMENT_LINK</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_document_link</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">DocumentLinkParams</span><span class="p">):</span>
+        <span class="n">uri</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">text_document</span><span class="o">.</span><span class="n">uri</span>
+        <span class="n">doc</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">workspace</span><span class="o">.</span><span class="n">get_document</span><span class="p">(</span><span class="n">uri</span><span class="p">)</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="n">DocumentLinkContext</span><span class="p">(</span><span class="n">doc</span><span class="o">=</span><span class="n">doc</span><span class="p">,</span> <span class="n">capabilities</span><span class="o">=</span><span class="n">ls</span><span class="o">.</span><span class="n">client_capabilities</span><span class="p">)</span>
+
+        <span class="n">links</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">ls</span><span class="o">.</span><span class="n">_features</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="n">links</span> <span class="o">+=</span> <span class="n">feature</span><span class="o">.</span><span class="n">document_link</span><span class="p">(</span><span class="n">context</span><span class="p">)</span> <span class="ow">or</span> <span class="p">[]</span>
+
+        <span class="k">return</span> <span class="n">links</span>
+
+    <span class="nd">@server</span><span class="o">.</span><span class="n">feature</span><span class="p">(</span><span class="n">DOCUMENT_SYMBOL</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_document_symbol</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">DocumentSymbolParams</span><span class="p">):</span>
+
+        <span class="n">doctree</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">get_initial_doctree</span><span class="p">(</span><span class="n">uri</span><span class="o">=</span><span class="n">params</span><span class="o">.</span><span class="n">text_document</span><span class="o">.</span><span class="n">uri</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">doctree</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+
+        <span class="n">visitor</span> <span class="o">=</span> <span class="n">SymbolVisitor</span><span class="p">(</span><span class="n">ls</span><span class="p">,</span> <span class="n">doctree</span><span class="p">)</span>
+        <span class="n">doctree</span><span class="o">.</span><span class="n">walkabout</span><span class="p">(</span><span class="n">visitor</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">visitor</span><span class="o">.</span><span class="n">symbols</span>
+
+    <span class="nd">@server</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">ESBONIO_SERVER_CONFIGURATION</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get_configuration</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the server&#39;s configuration.</span>
+
+<span class="sd">        Not to be confused with the ``workspace/configuration`` request where the server</span>
+<span class="sd">        can request the client&#39;s configuration. This is so clients can ask for sphinx&#39;s</span>
+<span class="sd">        output path for example.</span>
+
+<span class="sd">        As far as I know, there isn&#39;t anything built into the spec to cater for this?</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="n">ls</span><span class="o">.</span><span class="n">configuration</span>
+        <span class="n">ls</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ESBONIO_SERVER_CONFIGURATION</span><span class="p">,</span> <span class="n">dump</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">config</span>
+
+    <span class="nd">@server</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">ESBONIO_SERVER_PREVIEW</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">preview</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Start/Generate a preview of the project&quot;&quot;&quot;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">else</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+        <span class="n">ls</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">: </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ESBONIO_SERVER_PREVIEW</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ls</span><span class="o">.</span><span class="n">preview</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="ow">or</span> <span class="p">{}</span>
+
+    <span class="k">return</span> <span class="n">server</span>
+
+
+<span class="k">def</span> <span class="nf">_load_module</span><span class="p">(</span><span class="n">server</span><span class="p">:</span> <span class="n">RstLanguageServer</span><span class="p">,</span> <span class="n">modname</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load an extension module by calling its ``esbonio_setup`` function, if it exists.&quot;&quot;&quot;</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">module</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">modname</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+            <span class="s2">&quot;Unable to import module &#39;</span><span class="si">%s</span><span class="s2">&#39;</span><span class="se">\n</span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">modname</span><span class="p">,</span> <span class="n">traceback</span><span class="o">.</span><span class="n">format_exc</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">setup</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="s2">&quot;esbonio_setup&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">setup</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Skipping module &#39;</span><span class="si">%s</span><span class="s2">&#39;, missing &#39;esbonio_setup&#39; function&quot;</span><span class="p">,</span> <span class="n">modname</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">server</span><span class="o">.</span><span class="n">load_extension</span><span class="p">(</span><span class="n">modname</span><span class="p">,</span> <span class="n">setup</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">dump</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Debug helper function that converts an object to JSON.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="n">o</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">o</span><span class="p">,</span> <span class="n">enum</span><span class="o">.</span><span class="n">Enum</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">o</span><span class="o">.</span><span class="n">value</span>
+
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">o</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+
+            <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># Truncate long strings - but not uris!</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">k</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;uri&quot;</span><span class="p">):</span>
+                <span class="n">v</span> <span class="o">=</span> <span class="n">textwrap</span><span class="o">.</span><span class="n">shorten</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+
+            <span class="n">fields</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+
+        <span class="k">return</span> <span class="n">fields</span>
+
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">default</span><span class="p">)</span>
+</pre></div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer no-toc">
+      
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/furo.js"></script>
+    <script src="../../_static/translations.js"></script>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<p>
+The language server’s configuration options are passed as 
+<code class="docutils literal notranslate">
+<span class="pre">init_options</span>
+</code>
+ during the server’s setup e.g.
+</p>
+
+
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">lspconfig</span><span class="p">.</span><span class="n">esbonio</span><span class="p">.</span><span class="n">setup</span> <span class="p">{</span>
+  <span class="n">init_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">logLevel</span> <span class="o">=</span> <span class="s2">&quot;debug&quot;</span>
+    <span class="p">},</span>
+    <span class="n">sphinx</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">confDir</span> <span class="o">=</span> <span class="s2">&quot;/path/to/docs&quot;</span><span class="p">,</span>
+      <span class="n">srcDir</span> <span class="o">=</span> <span class="s2">&quot;${confDir}/../docs-src&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+
+<p>
+Here are all the options supported by the server.
+</p>
+

@@ -1,0 +1,44 @@
+<p>
+Basic configuration for the language server is provided by the
+
+<a class="reference external" href="https://github.com/mattn/vim-lsp-settings">
+vim-lsp-settings
+</a>
+
+ plugin.
+</p>
+
+
+<div class="highlight-vim notranslate"><div class="highlight"><pre><span></span><span class="k">set</span> <span class="nb">expandtab</span>
+<span class="k">set</span> <span class="nb">tabstop</span><span class="p">=</span><span class="m">3</span>
+<span class="k">set</span> <span class="nb">softtabstop</span><span class="p">=</span><span class="m">3</span>
+<span class="k">set</span> <span class="nb">shiftwidth</span><span class="p">=</span><span class="m">3</span>
+
+<span class="k">call</span> plug#begin<span class="p">(</span><span class="s1">&#39;./plugins&#39;</span><span class="p">)</span>
+
+Plug <span class="s1">&#39;prabirshrestha/vim-lsp&#39;</span>
+Plug <span class="s1">&#39;mattn/vim-lsp-settings&#39;</span>
+
+<span class="k">call</span> plug#<span class="k">end</span><span class="p">()</span>
+
+<span class="c">&quot; The following is based on the example setup found in vim-lsp&#39;s README</span>
+<span class="c">&quot; https://github.com/prabirshrestha/vim-lsp</span>
+<span class="c">&quot;</span>
+<span class="c">&quot; Only the methods currently supported by the language server are bound.</span>
+<span class="k">function</span><span class="p">!</span> s:on_lsp_buffer_enabled<span class="p">()</span> abort
+    <span class="k">setlocal</span> <span class="nb">omnifunc</span><span class="p">=</span><span class="nb">lsp</span>#<span class="nb">complete</span>
+    <span class="k">setlocal</span> signcolumn<span class="p">=</span>yes
+    <span class="k">if</span> exists<span class="p">(</span><span class="s1">&#39;+tagfunc&#39;</span><span class="p">)</span> <span class="p">|</span> <span class="k">setlocal</span> tagfunc<span class="p">=</span><span class="nb">lsp</span>#tagfunc <span class="p">|</span> <span class="k">endif</span>
+    nmap <span class="p">&lt;</span>buffer<span class="p">&gt;</span> <span class="nb">gd</span> <span class="p">&lt;</span>plug<span class="p">&gt;(</span><span class="nb">lsp</span><span class="p">-</span>definition<span class="p">)</span>
+    nmap <span class="p">&lt;</span>buffer<span class="p">&gt;</span> gs <span class="p">&lt;</span>plug<span class="p">&gt;(</span><span class="nb">lsp</span><span class="p">-</span>document<span class="p">-</span>symbol<span class="p">-</span>search<span class="p">)</span>
+    nmap <span class="p">&lt;</span>buffer<span class="p">&gt;</span> [<span class="k">g</span> <span class="p">&lt;</span>plug<span class="p">&gt;(</span><span class="nb">lsp</span><span class="p">-</span><span class="k">previous</span><span class="p">-</span>diagnostic<span class="p">)</span>
+    nmap <span class="p">&lt;</span>buffer<span class="p">&gt;</span> ]<span class="k">g</span> <span class="p">&lt;</span>plug<span class="p">&gt;(</span><span class="nb">lsp</span><span class="p">-</span>next<span class="p">-</span>diagnostic<span class="p">)</span>
+<span class="k">endfunction</span>
+
+augroup lsp_install
+    <span class="k">au</span><span class="p">!</span>
+<span class="c">    &quot; call s:on_lsp_buffer_enabled only for languages that has the server registered.</span>
+    autocmd <span class="nb">User</span> lsp_buffer_enabled <span class="k">call</span> s:on_lsp_buffer_enabled<span class="p">()</span>
+augroup END
+</pre></div>
+</div>
